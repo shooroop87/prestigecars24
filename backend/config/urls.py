@@ -3,7 +3,6 @@
 import os
 
 from core.sitemaps import StaticViewSitemap
-from core.views import subscribe_to_newsletter
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
