@@ -32,7 +32,7 @@
         <h2 class="text-30 fw-700 text-center mb-30">{% trans "Leave us your info" %}</h2>
 
         <div class="contactForm">
-          <form method="post" action="{% url 'contact' %}" id="contactForm">
+          <form method="post" action="{% url 'core:contact' %}" id="contactForm">
             {% csrf_token %}
             <div class="row y-gap-20">
               <div class="col-md-6">
