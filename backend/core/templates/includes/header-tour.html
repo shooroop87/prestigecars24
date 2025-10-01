@@ -1,0 +1,138 @@
+{% load static %}
+{% load dict_extras %}
+{% load i18n %}
+
+<header class="header -type-1 -secondary js-header">
+  <div data-anim="fade delay-3" class="header__container container">
+    <div class="headerMobile__left">
+      <button class="header__menuBtn js-menu-button">
+        <i class="icon-main-menu"></i>
+      </button>
+    </div>
+
+    <div class="header__logo">
+      <a href="{% url 'index' %}" class="header__logo">
+        <img src="{% static 'img/general/svgexport-1.svg' %}" alt="logo icon" loading="lazy">
+      </a>
+      <div class="xl:d-none">
+        <div class="header__search"></div>
+      </div>
+    </div>
+
+    <div class="headerMobile__right">
+      <a href="https://api.whatsapp.com/send/?phone=393208575909&text=Hi%21+Interested+in+Lake+Como%2FBellagio%2FLugano+tour+%28%E2%82%AC109%2B%29%2C+Barolo+wine+tour+%28%E2%82%AC149%2B%29%2C+or+private+Bernina+train.+We+are+%28number%29+on+%28date%29.+Options+and+prices%3F&type=phone_number&app_absent=0" 
+         class="d-flex ml-20" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="icon-whatsapp text-22"></i>
+      </a>
+    </div>
+
+    <div class="header__right">
+
+      <div class="headerDropdown js-form-dd">
+        <a href="{% url 'index' %}" class="headerDropdown__button" title="{% trans "The best tours and travels around the world" %}">
+          {% trans "Home" %}
+        </a>
+      </div>
+
+      <div class="headerDropdown lg:d-none js-form-dd">
+        <div class="headerDropdown__button" data-x-click="header-activities">
+          {% trans "Our Tours" %}
+          <i class="icon-chevron-down text-18"></i>
+        </div>
+
+        <div class="headerDropdown__content" data-x="header-activities" data-x-toggle="is-active">
+          <div class="tabsMenu">
+            <div class="tabsMenu__container">
+              <div class="tabs js-tabs">
+                <div class="tabsMenu__tabs">
+                  <div class="tabs__controls js-tabs-controls">
+                    <button class="tabs__button js-tabs-button is-tab-el-active" data-tab-target=".-tab-item-1">{% trans "All Tours" %}</button>
+                    {% for category in tour_categories %}
+                      <button class="tabs__button js-tabs-button" data-tab-target=".-tab-item-{{ forloop.counter|add:1 }}">{{ category }}</button>
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <div class="tabsMenu__content">
+                  <div class="tabs__content js-tabs-content">
+
+                    <!-- All Tours Tab -->
+                    <div class="tabs__pane -tab-item-1 is-tab-el-active">
+                      <div class="tabsMenu__lists">
+                        <div class="tabsMenu-list">
+                          <div class="tabsMenu-list__title">{% trans "All Tours" %}</div>
+                          <div class="tabsMenu-list__content">
+                            {% if all_tours %}
+                              {% for tour in all_tours %}
+                                <div class="tabsMenu-list__item">
+                                  <a href="{{ tour.get_absolute_url }}">{{ tour }}</a>
+                                </div>
+                              {% endfor %}
+                            {% else %}
+                              <div class="tabsMenu-list__item">
+                                <a href="{% url 'tours:tour_list' %}">{% trans "View All Tours" %}</a>
+                              </div>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Dynamic Category Tabs -->
+                    {% for category in tour_categories %}
+                      <div class="tabs__pane -tab-item-{{ forloop.counter|add:1 }}">
+                        <div class="tabsMenu__lists">
+                          <div class="tabsMenu-list">
+                            <div class="tabsMenu-list__title">{{ category }}</div>
+                            <div class="tabsMenu-list__content">
+                              {% for tour in tours_by_category|get_item:category %}
+                                <div class="tabsMenu-list__item">
+                                  <a href="{{ tour.get_absolute_url }}">{{ tour }}</a>
+                                </div>
+                              {% empty %}
+                                <div class="tabsMenu-list__item">
+                                  <a href="{{ category.get_absolute_url }}">{% trans "View" %} {{ category }}</a>
+                                </div>
+                              {% endfor %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="headerDropdown js-form-dd">
+        <a href="{% url 'blog:blog' %}" class="headerDropdown__button" title="{% trans "Travel stories, destination guides and travel tips" %}">
+          {% trans "Blog" %}
+        </a>
+      </div>
+
+      <div class="headerDropdown js-form-dd">
+        <a href="{% url 'about' %}" class="headerDropdown__button" title="{% trans "Learn about our founders, mission, and commitment to authentic travel experiences" %}">
+          {% trans "About Us" %}
+        </a>
+      </div>
+
+      {% include 'includes/language-switcher.html' %}
+
+      <a href="{% url 'contact' %}" class="button -sm -dark-1 bg-accent-1 rounded-200 text-white ml-30">
+        {% trans "Contact Us" %}
+      </a>
+
+      <button class="header__menuBtn ml-30 js-menu-button">
+        <i class="icon-main-menu"></i>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- Mobile Menu -->
+{% include 'includes/header-mobile-menu.html' %}

@@ -1,0 +1,126 @@
+{% load static %}
+{% load i18n %}
+<section class="mt-30 layout-pb-xl">
+  <div class="container">
+    <div class="row">
+      <div class="col-auto">
+        <h2 class="text-30">{% trans "Similar experiences" %}</h2>
+      </div>
+    </div>
+
+    <div class="relative pt-40 sm:pt-20">
+      <div class="overflow-hidden pb-60 js-section-slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight swiper-watch-progress swiper-backface-hidden" data-gap="30" data-slider-cols="xl-4 lg-3 md-2 sm-1 base-1" data-nav-prev="js-slider1-prev" data-nav-next="js-slider1-next">
+        <div class="swiper-wrapper" aria-live="polite">
+
+          {% for tour in related_tours %}
+          {% if tour and tour.get_absolute_url %}
+          <div class="swiper-slide" role="group">
+            <a href="{{ tour.get_absolute_url }}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow">
+              <div class="tourCard__header">
+                <div class="tourCard__image ratio ratio-28:20">
+                  {% if tour.featured_image %}
+                    <img src="{{ tour.featured_image.url }}" alt="{{ tour.title|default:'Tour' }}" class="img-ratio rounded-12" loading="lazy">
+                  {% else %}
+                    <img src="{% static 'img/tours/00_bg_general/default-tour.webp' %}" alt="{{ tour.title|default:'Tour' }}" class="img-ratio rounded-12" loading="lazy">
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <div class="tourCard__location d-flex items-center text-13 text-light-2">
+                  <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                  {{ tour.location|default:"Italy" }}
+                </div>
+
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  <span>{{ tour.title|default:"Tour" }}</span>
+                </h3>
+
+                <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                  </div>
+                  <span class="text-dark-1 ml-10">{{ tour.rating|default:"5.0" }} ({{ tour.reviews_count|default:"0" }})</span>
+                </div>
+
+                <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    <i class="icon-clock text-16 mr-5"></i>
+                    {{ tour.get_duration_display|default:"8 hours" }}
+                  </div>
+                  <div>{% trans "From" %} <span class="text-16 fw-500">{{ tour.get_price_display|default:"€99" }}</span></div>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endif %}
+          {% empty %}
+          <!-- Fallback если нет туров -->
+          {% for tour in all_tours|slice:":6" %}
+          {% if tour and tour.get_absolute_url %}
+          <div class="swiper-slide" role="group">
+            <a href="{{ tour.get_absolute_url }}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow">
+              <div class="tourCard__header">
+                <div class="tourCard__image ratio ratio-28:20">
+                  {% if tour.featured_image %}
+                    <img src="{{ tour.featured_image.url }}" alt="{{ tour.title|default:'Tour' }}" class="img-ratio rounded-12" loading="lazy">
+                  {% else %}
+                    <img src="{% static 'img/tours/00_bg_general/default-tour.webp' %}" alt="{{ tour.title|default:'Tour' }}" class="img-ratio rounded-12" loading="lazy">
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <div class="tourCard__location d-flex items-center text-13 text-light-2">
+                  <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                  {{ tour.location|default:"Italy" }}
+                </div>
+
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  <span>{{ tour.title|default:"Tour" }}</span>
+                </h3>
+
+                <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                  </div>
+                  <span class="text-dark-1 ml-10">{{ tour.rating|default:"5.0" }} ({{ tour.reviews_count|default:"0" }})</span>
+                </div>
+
+                <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    <i class="icon-clock text-16 mr-5"></i>
+                    {{ tour.get_duration_display|default:"8 hours" }}
+                  </div>
+                  <div>{% trans "From" %} <span class="text-16 fw-500">{{ tour.get_price_display|default:"€99" }}</span></div>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+
+        </div>
+
+        <div class="navAbsolute">
+          <button class="navAbsolute__button bg-white js-slider1-prev" aria-label="{% trans 'Previous slide' %}">
+            <i class="icon-arrow-left text-14"></i>
+          </button>
+
+          <button class="navAbsolute__button bg-white js-slider1-next" aria-label="{% trans 'Next slide' %}">
+            <i class="icon-arrow-right text-14"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

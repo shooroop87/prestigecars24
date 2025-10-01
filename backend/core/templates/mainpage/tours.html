@@ -1,0 +1,63 @@
+{% load static %}
+{% load i18n %}
+<section class="layout-pt-xl">
+  <div data-anim-wrap class="container">
+    <div data-anim-child="slide-up" class="row justify-between items-end y-gap-10">
+      <div class="col-auto">
+        <h2 class="text-30 md:text-24">{% trans "Our tours" %}</h2>
+        <p>{% trans "Your reliable partner in organizing unforgettable trips. Let the journey begin!" %}</p>
+      </div>
+      <div class="col-auto">
+          <span>🏆 {% trans "We are the best-rated for day trips from Milan on the internet" %}</span>
+      </div>
+    </div>
+
+    <div class="row y-gap-30 pt-40 sm:pt-20 mobile-css-slider -w-300">
+      {% for tour in featured_tours %}
+      <div data-anim-child="slide-up delay-{{ forloop.counter|add:1 }}" class="col-lg-4 col-md-6">
+        <a href="{{ tour.get_absolute_url }}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12  -hover-shadow">
+          <div class="tourCard__header">
+            <div class="tourCard__image ratio ratio-28:20">
+              {% if tour.featured_image %}
+                <img src="{{ tour.featured_image.url }}" alt="{{ tour.title }}" class="img-ratio rounded-12" loading="lazy">
+              {% else %}
+                <img src="{% static 'img/tours/00_bg_general/default-tour.webp' %}" alt="{{ tour.title }}" class="img-ratio rounded-12" loading="lazy">
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="tourCard__content px-10 pt-10">
+            <div class="tourCard__location d-flex items-center text-13 text-light-2">
+              <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+              {{ tour.location|default:"Italy" }}
+            </div>
+
+            <h3 class="tourCard__title text-16 fw-500 mt-5">
+              <span>{{ tour.title }}</span>
+            </h3>
+
+            <div class="tourCard__rating d-flex items-center text-13 mt-5">
+              <div class="d-flex x-gap-5">
+                <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                <div><i class="icon-star text-10 text-yellow-2"></i></div>
+              </div>
+              <span class="text-dark-1 ml-10">{{ tour.rating }} ({{ tour.reviews_count }})</span>
+            </div>
+
+            <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+              <div class="d-flex items-center">
+                <i class="icon-clock text-16 mr-5"></i>
+                {{ tour.get_duration_display }}
+              </div>
+              <div>{% trans "From" %} <span class="text-16 fw-500">{{ tour.get_price_display }}</span></div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
