@@ -1,8 +1,38 @@
 {% load static %}
 
-<!-- JavaScript -->
-<script src="{% static 'js/vendors3.js' %}" defer></script>
-<script src="{% static 'js/main3.js' %}" defer></script>
-<script src="{% static 'js/mobile-tour-enhancements2.js' %}" defer></script>
-<script src="{% static 'js/whatsapp2.js' %}" defer></script>
-<script src="{% static 'js/cookie-manager2.min.js' %}" defer></script>
+<!-- Core JavaScript -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate.min.js' %}"></script>
+
+<!-- Slider Revolution -->
+<script src="{% static 'js/tptools.js' %}" async></script>
+<script src="{% static 'js/sr7.js' %}" async></script>
+<script src="{% static 'js/migration.js' %}"></script>
+
+<!-- UI Components -->
+<script src="{% static 'js/jquery.blockUI.min.js' %}" defer></script>
+<script src="{% static 'js/js.cookie.min.js' %}" defer></script>
+<script src="{% static 'js/select2.full.min.js' %}" defer></script>
+<script src="{% static 'js/jquery.justifiedGallery.min.js' %}"></script>
+
+<!-- WooCommerce (if needed for checkout) -->
+<script src="{% static 'js/add-to-cart.min.js' %}" defer></script>
+<script src="{% static 'js/woocommerce.min.js' %}" defer></script>
+
+<!-- Theme Core -->
+<script src="{% static 'js/luxedrive-core.js' %}"></script>
+<script src="{% static 'js/luxedrive-core.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/main.min.js' %}"></script>
+
+<!-- AJAX Config -->
+<script>
+var wc_add_to_cart_params = {
+    "ajax_url": "{% url 'admin:index' %}",
+    "wc_ajax_url": "/?wc-ajax=%%endpoint%%",
+    "i18n_view_cart": "View Cart",
+    "cart_url": "/cart/",
+    "is_cart": "",
+    "cart_redirect_after_add": "no"
+};
+</script>
