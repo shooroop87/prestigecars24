@@ -1,96 +1,43 @@
 {% load static %}
 {% load dict_extras %}
 {% load i18n %}
-<div class="menu js-menu">
-  <div class="menu__overlay js-menu-button"></div>
-  <div class="menu__container">
-    <div class="menu__header">
-      <h4>{% trans "Main Menu" %}</h4>
-      <button class="js-menu-button"><i class="icon-cross text-10"></i></button>
+
+<header id="qodef-page-mobile-header" role="banner">
+    <div id="qodef-page-mobile-header-inner" class="qodef-skin--light">
+        <a itemprop="url" class="qodef-mobile-header-logo-link qodef-height--set qodef-source--image" href="{% url 'home' %}" rel="home">
+            <h1 class="logo-text2">PRESTIGECARS24</h1>
+        </a>
+        
+        <a href="javascript:void(0)" class="qodef-opener-icon qodef-m qodef-source--predefined qodef-mobile-header-opener">
+            <span class="qodef-m-icon qodef--open">
+                <svg class="qodef-svg--menu" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50px" height="8px" viewBox="0 0 50 8">
+                    <line x1="0" y1="0.5" x2="50" y2="0.5"></line>
+                    <line x1="50" y1="7.5" x2="0" y2="7.5"></line>
+                </svg>
+            </span>
+            <span class="qodef-m-icon qodef--close">
+                <svg class="qodef-svg--close" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16">
+                    <line x1="15.5" y1="0.5" x2="0.5" y2="15.5"></line>
+                    <line x1="0.5" y1="0.5" x2="15.5" y2="15.5"></line>
+                </svg>
+            </span>
+        </a>
     </div>
-
-    <div class="menu__content">
-      <ul class="menuNav js-navList">
-        <li class="menuNav__item">
-          <a href="{% url 'index' %}">
-            {% trans "Home" %}
-          </a>
-        </li>
-
-        <li class="menuNav__item -has-submenu js-has-submenu">
-          <a href="{% url 'tours:tour_list' %}">
-            {% trans "Our Tours" %}
-            <i class="icon-chevron-right"></i>
-          </a>
-          <ul class="submenu">
-            <li class="submenu__item js-nav-list-back">
-              <a role="button">{% trans "Back" %}</a>
+    
+    <nav class="qodef-mobile-header-navigation" role="navigation" aria-label="Mobile Menu">
+        <ul id="menu-main-menu-4" class="">
+            <li class="menu-item">
+                <a href="{% url 'about' %}"><span class="qodef-menu-item-text">About Us</span></a>
             </li>
-            <li class="submenu__item">
-              <a href="{% url 'tours:tour_list' %}">{% trans "All Tours" %}</a>
+            <li class="menu-item">
+                <a href="{% url 'car_rental' %}"><span class="qodef-menu-item-text">Car rental</span></a>
             </li>
-            
-            <!-- Динамические категории туров -->
-            {% if tour_categories %}
-  {% for category in tour_categories %}
-    <li class="submenu__item">
-      <a href="{{ category.get_absolute_url }}">{{ category }}</a>
-    </li>
-  {% endfor %}
-{% endif %}
-          </ul>
-        </li>
-
-        <li class="menuNav__item">
-          <a href="{% url 'blog:blog' %}">
-            {% trans "Blog" %}
-          </a>
-        </li>
-
-        <li class="menuNav__item">
-          <a href="{% url 'about' %}">
-            {% trans "About Us" %}
-          </a>
-        </li>
-
-        <li class="menuNav__item">
-          <a href="{% url 'contact' %}">{% trans "Contact" %}</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="menu__footer">
-      <i class="icon-headphone text-50"></i>
-      <div class="text-20 lh-12 fw-500 mt-20">
-        <div>{% trans "Speak to our expert at" %}</div>
-        <a class="text-accent-1" href="tel:+393761446106">+39 376-144-6106</a>
-      </div>
-
-      <div class="d-flex items-center x-gap-10 pt-30">
-        <div>
-          <a href="https://api.whatsapp.com/send/?phone=393208575909&text=Hi%21+Interested+in+Lake+Como%2FBellagio%2FLugano+tour+%28%E2%82%AC109%2B%29%2C+Barolo+wine+tour+%28%E2%82%AC149%2B%29%2C+or+private+Bernina+train.+We+are+%28number%29+on+%28date%29.+Options+and+prices%3F&type=phone_number&app_absent=0"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="d-block">
-            <i class="icon-whatsapp"></i>
-          </a>
-        </div>
-        <div>
-          <a href="https://www.instagram.com/abroads_tours/" class="d-block">
-            <i class="icon-instagram"></i>
-          </a>
-        </div>
-        <div>
-          <a href="https://www.tripadvisor.com/Attraction_Review-g187849-d24938712-Reviews-Abroads_Tours-Milan_Lombardy.html" class="d-block">
-            <i class="icon-tripadvisor"></i>
-          </a>
-        </div>
-        <div>
-          <a href="https://www.youtube.com/channel/UCgnbvG0m5WGgEaw164Cj-ig" class="d-block">
-            <i class="icon-youtube"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+            <li class="menu-item">
+                <a href="{% url 'luxury_services' %}"><span class="qodef-menu-item-text">Luxury Services</span></a>
+            </li>
+            <li class="menu-item">
+                <a href="{% url 'locations' %}"><span class="qodef-menu-item-text">Locations</span></a>
+            </li>
+        </ul>
+    </nav>
+</header>

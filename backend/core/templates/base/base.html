@@ -9,39 +9,45 @@
     {% include 'base/head_analytics.html' %}
     {% block extra_css %}{% endblock %}
 </head>
-<body>
-  <div class="preloader js-preloader">
-    <div class="preloader__wrap">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220" height="220">
-        <defs>
-          <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#4a4a4a;stop-opacity:1" />
-          </linearGradient>
-        </defs>
-        <g>
-          <path fill="url(#carGradient)" d="M60,120 L40,120 L40,100 L60,100 Z M180,120 L160,120 L160,100 L180,100 Z M160,90 L60,90 L50,70 L170,70 Z M170,130 L50,130 L50,90 L170,90 Z"/>
-          <circle cx="70" cy="130" r="15" fill="#fff"/>
-          <circle cx="150" cy="130" r="15" fill="#fff"/>
-        </g>
-      </svg>
+<body class="home">
+    <div id="qodef-page-wrapper">
+        
+        <!-- Desktop Header -->
+        {% include 'includes/header.html' %}
+        
+        <!-- Mobile Header -->
+        {% include 'includes/mobile_header.html' %}
+        
+        <!-- Page Content -->
+        <div id="qodef-page-outer">
+            <div id="qodef-page-inner" class="qodef-content-full-width">
+                <main id="qodef-page-content" class="qodef-grid qodef-layout--template qodef-grid-template--12" role="main">
+                    <div class="qodef-grid-inner">
+                        <div class="qodef-grid-item qodef-page-content-section qodef-col--content">
+                            {% block content %}{% endblock %}
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        {% include 'includes/footer.html' %}
+        
+        <!-- Side Area -->
+        {% include 'includes/side_area.html' %}
+        
+        <!-- Search -->
+        {% include 'includes/search.html' %}
+        
+        <!-- Back to Top -->
+        {% include 'includes/back_to_top.html' %}
+        
     </div>
-  </div>
-
-  {% include 'includes/scroll_to_top.html' %}
     
-  <main>
-    {% cache 3600 header request.path %}
-      {% include 'includes/header.html' %}
-    {% endcache %}
+    <!-- JavaScript Files -->
+    {% include 'base/scripts.html' %}
     
-    {% block content %}{% endblock %}
-    
-    {% include 'includes/footer.html' %}
-  </main>
-    
-  {% include 'includes/whatsapp_button.html' %}
-  {% include 'base/scripts.html' %}
-  {% include 'includes/cookie_popup.html' %}
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

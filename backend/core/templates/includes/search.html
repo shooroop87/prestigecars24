@@ -1,0 +1,28 @@
+<div class="qodef-fullscreen-search-holder qodef-m">
+    <a href="javascript:void(0)" class="qodef-opener-icon qodef-m qodef-source--predefined qodef-m-close">
+        <span class="qodef-m-icon">
+            <svg class="qodef-svg--close" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16">
+                <line x1="15.5" y1="0.5" x2="0.5" y2="15.5"></line>
+                <line x1="0.5" y1="0.5" x2="15.5" y2="15.5"></line>
+            </svg>
+        </span>
+    </a>
+    
+    <div class="qodef-m-inner">
+        <form action="{% url 'search' %}" class="qodef-m-form" method="get">
+            <div class="qodef-form-wrapper">
+                <input type="text" placeholder="Search for..." name="q" class="qodef-m-form-field" autocomplete="off" required>
+                <span class="qodef-form-line" style="bottom: 0px;"></span>
+            </div>
+            <button type="submit" class="qodef-opener-icon qodef-m qodef-source--predefined qodef-m-form-submit">
+                <svg class="qodef-svg--search" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="17.33" height="17.33" viewBox="3.32 3.27 17.33 17.33">
+                    <g>
+                        <path d="M11.11,4c3.93,0,7.11,3.18,7.11,7.11c0,3.93-3.19,7.11-7.11,7.11C7.18,18.22,4,15.04,4,11.11 C4,7.18,7.18,4,11.11,4z"></path>
+                        <line x1="20" y1="20" x2="16.13" y2="16.13"></line>
+                    </g>
+                </svg>
+            </button>
+            <div class="qodef-m-form-line"></div>
+        </form>
+    </div>
+</div>
