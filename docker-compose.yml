@@ -1,8 +1,6 @@
 version: "3.9"
 
 volumes:
-  pg_data:
-  redis_data:
   static:
   media:
 
@@ -10,63 +8,6 @@ networks:
   webnet:
 
 services:
-  db:
-    image: postgres:13.10
-    env_file: .env
-    ports:
-      - "5432:5432"
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-prestigecars_user} -d ${POSTGRES_DB:-prestigecars}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    restart: unless-stopped
-    networks: [webnet]
-
-  redis:
-    image: redis:7
-    command: >
-      redis-server
-      --appendonly yes
-      --maxmemory 256mb
-      --maxmemory-policy allkeys-lru
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-    restart: unless-stopped
-    networks: [webnet]
-
-  migrations:
-    build: ./backend/
-    env_file: .env
-    volumes:
-      - ./backend:/app:delegated
-      - static:/app/collected_static
-      - media:/app/media
-    depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    command: >
-      sh -c "
-        echo 'Running migrations...' &&
-        python manage.py migrate &&
-        echo 'Collecting static...' &&
-        python manage.py collectstatic --noinput &&
-        echo 'Migrations completed.'
-      "
-    restart: "no"
-    networks: [webnet]
-
   backend:
     build: ./backend/
     env_file: .env
@@ -74,38 +15,26 @@ services:
       - ./backend:/app:delegated
       - static:/app/collected_static
       - media:/app/media
-    depends_on:
-      migrations:
-        condition: service_completed_successfully
     command: >
-      sh -c "echo 'Starting Gunicorn server...' &&
-      gunicorn config.wsgi:application --bind 0.0.0.0:8000
-      --worker-class gthread --workers 3 --threads 4
-      --timeout 120 --graceful-timeout 30 --keep-alive 5
-      --access-logfile - --error-logfile - --log-level info"
+      sh -c "
+        echo 'Collecting static...' &&
+        python manage.py collectstatic --noinput --clear &&
+        echo 'Starting Gunicorn...' &&
+        gunicorn config.wsgi:application --bind 0.0.0.0:8000
+        --workers 2 --threads 4 --timeout 60
+        --access-logfile - --error-logfile -"
     ports:
       - "8001:8000"
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
-      interval: 20s
-      timeout: 5s
-      retries: 3
-      start_period: 40s
     restart: unless-stopped
-    ulimits:
-      nofile:
-        soft: 65536
-        hard: 65536
     networks: [webnet]
 
   gateway:
     build: ./gateway/
     volumes:
-      - static:/staticfiles
-      - media:/mediafiles
+      - static:/staticfiles:ro
+      - media:/mediafiles:ro
     depends_on:
-      backend:
-        condition: service_started
+      - backend
     ports:
       - "8000:80"
     restart: unless-stopped

@@ -1,29 +1,28 @@
-# Основные зависимости Django
+# Core Django
 Django>=4.2,<5.0
 psycopg2-binary>=2.9.0
 python-dotenv>=1.0.0
 
-# WSGI сервер для production
+# WSGI server
 gunicorn>=21.2.0
 
-# Переводы и интернационализация
+# Translations
 django-parler>=2.3
 
-# SEO метаданные
+# SEO
 django-meta>=2.4.0
 
-# Изображения и миниатюры
+# Images
 Pillow>=10.0.0
 
-# Кеширование (опционально)
+# Cache
 django-redis>=5.3.0
 
-# Dev зависимости (опционально)
-django-browser-reload>=1.8.0
+# Utils
+pytz>=2023.3
 
 # Дополнительные зависимости для работы системы
 requests>=2.31.0  # ДОБАВЛЕНО: для HTTP запросов (используется в core.views)
 
-# Удалено: django-ckeditor - больше не нужен
-# Удалено: django-ckeditor-uploader - больше не нужен
-pytz>=2023.3
+# Dev зависимости (опционально)
+django-browser-reload>=1.8.0
