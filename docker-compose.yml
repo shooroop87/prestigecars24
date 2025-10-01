@@ -3,8 +3,8 @@ version: "3.9"
 volumes:
   pg_data:
   redis_data:
-  static:           # собранная статика Django (collectstatic)
-  media:            # медиа-файлы (upload)
+  static:
+  media:
 
 networks:
   webnet:
@@ -18,7 +18,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-abroadtours_user} -d ${POSTGRES_DB:-abroadtours}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-prestigecars_user} -d ${POSTGRES_DB:-prestigecars}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -44,11 +44,9 @@ services:
     restart: unless-stopped
     networks: [webnet]
 
-  # Одноразовый шаг: миграции, collectstatic, первичные данные
   migrations:
     build: ./backend/
     env_file: .env
-    # ⚠️ bind-mount кода делает IO медленным на Mac/Win. Для локалки оставляем, но добавляем :delegated.
     volumes:
       - ./backend:/app:delegated
       - static:/app/collected_static
@@ -64,9 +62,7 @@ services:
         python manage.py migrate &&
         echo 'Collecting static...' &&
         python manage.py collectstatic --noinput &&
-        echo 'Loading initial tours data...' &&
-        python manage.py load_initial_tours_data &&
-        echo 'Migrations and setup completed.'
+        echo 'Migrations completed.'
       "
     restart: "no"
     networks: [webnet]
@@ -74,10 +70,8 @@ services:
   backend:
     build: ./backend/
     env_file: .env
-    # Для скорости: не монтируем весь контейнер поверх /app-образа, а только статик/медиа и код (как опция).
-    # Если нужно максимально быстрое автообновление кода — оставь bind-монт кода.
     volumes:
-      - ./backend:/app:delegated     # закомментируй эту строку для ещё более быстрых I/O (но без live-reload)
+      - ./backend:/app:delegated
       - static:/app/collected_static
       - media:/app/media
     depends_on:
@@ -89,14 +83,14 @@ services:
       --worker-class gthread --workers 3 --threads 4
       --timeout 120 --graceful-timeout 30 --keep-alive 5
       --access-logfile - --error-logfile - --log-level info"
-    # Пробрасываем наружу порт бэка (обходя nginx) — удобно для curl/отладки
     ports:
       - "8001:8000"
     healthcheck:
-      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health/"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
       interval: 20s
       timeout: 5s
       retries: 3
+      start_period: 40s
     restart: unless-stopped
     ulimits:
       nofile:
@@ -104,28 +98,6 @@ services:
         hard: 65536
     networks: [webnet]
 
-  # Планировщик обновления отзывов — остаётся отдельным сервисом
-  reviews-updater:
-    build: ./backend/
-    env_file: .env
-    volumes:
-      - ./backend:/app:delegated
-    depends_on:
-      migrations:
-        condition: service_completed_successfully
-    command: >
-      sh -c "
-        sleep 10 &&
-        echo '0 6 * * * cd /app && python manage.py refresh_all_reviews --clear-cache >> /tmp/reviews.log 2>&1' > /tmp/crontab &&
-        echo '0 18 * * * cd /app && python manage.py refresh_all_reviews >> /tmp/reviews.log 2>&1' >> /tmp/crontab &&
-        crontab /tmp/crontab &&
-        echo 'Cron jobs installed.' &&
-        crond -f -l 2
-      "
-    restart: unless-stopped
-    networks: [webnet]
-
-  # Nginx gateway — раздаёт статику/медиа и проксит в backend
   gateway:
     build: ./gateway/
     volumes:
