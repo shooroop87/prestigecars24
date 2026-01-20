@@ -1,0 +1,65 @@
+<!-- section-offers -->
+<div class="section-properties tf-spacing-8" id="offers">
+    <div class="tf-container">
+        <div class="wrap-heading-section d-flex justify-content-between align-items-center mb_30">
+            <div class="heading-section">
+                <h3>Предложения от застройщиков</h3>
+            </div>
+            <a href="{% url 'properties:list' %}" class="tf-btn btn-bg-1 btn-px-32">
+                <span>Все объекты</span>
+                <span class="bg-effect"></span>
+            </a>
+        </div>
+        
+        <div class="swiper" data-preview="3" data-tablet="2" data-mobile="1" data-space-lg="30" data-space-md="20" data-space="15">
+            <div class="swiper-wrapper">
+                {% for property in featured_properties %}
+                <div class="swiper-slide">
+                    <div class="card-house style-default">
+                        <div class="img-style mb_20">
+                            {% if property.main_image %}
+                            <img loading="lazy" src="{{ property.main_image.url }}" width="410" height="308" alt="{{ property.name }}">
+                            {% endif %}
+                            <div class="wrap-tag d-flex gap_8 mb_12">
+                                <div class="tag sale text-button-small fw-6 text_primary-color">
+                                    {{ property.get_status_display }}
+                                </div>
+                                {% if property.property_type %}
+                                <div class="tag categoreis text-button-small fw-6 text_primary-color">
+                                    {{ property.property_type.name }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            <a href="{{ property.get_absolute_url }}" class="overlay-link"></a>
+                        </div>
+                        <div class="content">
+                            <a href="{{ property.get_absolute_url }}" class="title mb_8 h5 link text_primary-color">
+                                {{ property.name }}{% if property.location %}, {{ property.location.name }}{% endif %}
+                            </a>
+                            <h6 class="price mb_12">
+                                {% if property.developer %}
+                                <a href="{{ property.developer.get_absolute_url }}" class="link">{{ property.developer.name }}</a>
+                                <span class="text_secondary-color text-body-default"> | Рейтинг {{ property.developer.rating }}</span>
+                                {% endif %}
+                            </h6>
+                            {% if property.completion_date %}
+                            <p class="text_secondary-color">Дата сдачи: {{ property.completion_date }}</p>
+                            {% endif %}
+                            {% if property.price_from %}
+                            <p class="text-title fw-6 mt_8">от ${{ property.price_from|floatformat:0 }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="swiper-slide">
+                    <div class="card-house style-default text-center p-4">
+                        <p class="text_secondary-color">Объекты пока не добавлены</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="sw-dots sw-pagination-layout justify-content-center d-flex mt_24"></div>
+        </div>
+    </div>
+</div>

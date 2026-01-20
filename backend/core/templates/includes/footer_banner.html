@@ -1,0 +1,33 @@
+{% load static %}
+<!-- banner -->
+<div class="banner">
+    <div class="parallaxie">
+        <img src="https://prestigecars24.com/wp-content/uploads/2023/01/h1-img-13.jpg" alt="Luxury Car Rental Milan" class="banner-img">
+    </div>
+</div>
+<!-- End banner -->
+
+<style>
+.banner .parallaxie {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+.banner .parallaxie .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .banner .parallaxie {
+        height: 250px;
+    }
+    .banner .parallaxie .banner-img {
+        object-position: center center;
+    }
+}
+</style>

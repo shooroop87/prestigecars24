@@ -1,0 +1,102 @@
+<!-- section-testimonial -->
+<div class="section-testimonials tf-spacing-7" style="background-color: #0c1315;">
+    <div class="tf-container sw-layout">
+        <div class="heading-section mb_40">
+            <h3 class="text_white qodef-m-title split-text effect-blur-fade">We strive to meet the needs<br>
+of our clients, and we value their<br>
+opinions about our work.</h3>
+        </div>
+        <div class="swiper" data-preview="3" data-tablet="2" data-mobile="1" data-mobile-sm="1"
+            data-space-lg="30" data-space-md="24" data-space="15">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <h5 class="text_white mb_12" style="font-family: Epilogue, sans-serif; font-weight: 400; font-size:22px; line-height: 32px;">Unforgettable Luxury Experience</h5>
+                        <ul class="ratings d-flex mb_20">
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                        </ul>
+                        <p class="text_color-1 mb_30" style="font-weight: 400;">The luxury rental service from Prestige Cars was beyond exceptional. They tailored every detail of my trip, from the car selection to the itinerary, making it a truly personalized experience. The Lamborghini Urus was pristine, and the service was flawless.</p>
+                        <div class="author">
+                            <span class="text_secondary-color-2 text-uppercase qodef-m-subtitle" style="letter-spacing: 2px; font-size: 12px; font-family: Inconsolata, sans-serif;">Emma Thompson , Milan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <h5 class="text_white mb_12" style="font-family: Epilogue, sans-serif; font-weight: 400;font-size:22px; line-height: 32px;">Seamless and Sophisticated</h5>
+                        <ul class="ratings d-flex mb_20">
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                        </ul>
+                        <p class="text_color-1 mb_30" style="font-weight: 400;">Prestige Cars redefined car rental for me. The Ferrari 296 GTB was a dream to drive, and their team ensured every aspect of the rental process was smooth and professional. It's more than a car rental—it's a lifestyle!</p>
+                        <div class="author">
+                            <span class="text_secondary-color-2 text-uppercase qodef-m-subtitle" style="letter-spacing: 2px; font-size: 12px; font-family: Inconsolata, sans-serif;">Lucas Moretti , Rome</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <h5 class="text_white mb_12" style="font-family: Epilogue, sans-serif; font-weight: 400;font-size:22px; line-height: 32px;">Top-Notch Service</h5>
+                        <ul class="ratings d-flex mb_20">
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                        </ul>
+                        <p class="text_color-1 mb_30" style="font-weight: 400;">From start to finish, Prestige Cars delivered a five-star experience. The Mercedes-AMG G 63 was immaculate, and their attention to detail made my trip unforgettable. I'll never settle for less after this!</p>
+                        <div class="author">
+                            <span class="text_secondary-color-2 text-uppercase qodef-m-subtitle" style="letter-spacing: 2px; font-size: 12px; font-family: Inconsolata, sans-serif;">Sofia Rossi , Florence</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <h5 class="text_white mb_12" style="font-family: Epilogue, sans-serif; font-weight: 400;font-size:22px; line-height: 32px;">Exceptional Fleet & Service</h5>
+                        <ul class="ratings d-flex mb_20">
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                            <li><i class="icon-favorite_major"></i></li>
+                        </ul>
+                        <p class="text_color-1 mb_30" style="font-weight: 400;">Renting the Porsche 911 Turbo S for my weekend in Como was the highlight of my trip. The car was spotless, delivery was on time, and the team went above and beyond. Highly recommend!</p>
+                        <div class="author">
+                            <span class="text_secondary-color-2 text-uppercase qodef-m-subtitle" style="letter-spacing: 2px; font-size: 12px; font-family: Inconsolata, sans-serif;">Marco Bianchi , Como</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sw-dots style-1 sw-pagination-layout justify-content-center d-flex mt_24"></div>
+        </div>
+    </div>
+</div>
+<!-- End section-testimonial -->
+<style>
+.section-testimonials .testimonial-item {
+    padding: 10px 50px;
+}
+.section-testimonials .ratings li i {
+    color: #bfa37c;
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const testimonialSwiper = document.querySelector('.section-testimonials .swiper');
+    if (testimonialSwiper && testimonialSwiper.swiper) {
+        testimonialSwiper.swiper.params.autoplay = {
+            delay: 4000,
+            disableOnInteraction: false
+        };
+        testimonialSwiper.swiper.params.loop = true;
+        testimonialSwiper.swiper.autoplay.start();
+    }
+});
+</script>

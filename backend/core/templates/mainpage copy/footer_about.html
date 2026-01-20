@@ -1,0 +1,14 @@
+<!-- section-about -->
+<div class="section-about tf-spacing-8" id="about">
+    <div class="tf-container">
+        <div class="tf-grid-layout md-col-12">
+            <div class="box">
+                {% if settings.about_text %}
+                    {{ settings.about_text|safe }}
+                {% else %}
+                    <p class="mb_8"><b>prestigecars.com</b> — независимый рейтинг застройщиков и девелоперов на Бали, который помогает инвесторам и покупателям выбрать надежную компанию и проект для вложений.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

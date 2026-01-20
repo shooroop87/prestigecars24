@@ -1,44 +1,11 @@
-{% extends 'base/base.html' %}
-{% load static i18n %}
+{% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Prestige Cars 24 - Luxury Car Rental{% endblock %}
-{% block description %}{% trans "Discover unforgettable travel experiences with Abroads Tours. Exclusive tours, best prices, professional service. Book now!" %}{% endblock %}
-{% block keywords %}{% trans "tours, travel, vacation, excursions, travel agency, holiday, airline tickets" %}{% endblock %}
+{% block title %}prestigecars - Real Estate{% endblock %}
 
-{# Open Graph для соцсетей #}
-{% block og_title %}{% trans "Abroads Tours - Unforgettable Journeys" %}{% endblock %}
-{% block og_description %}{% trans "The best tours around the world from a professional travel agency" %}{% endblock %}
+{% block meta_description %}prestigecars is a website specializing in buying and renting properties{% endblock %}
 
 {% block content %}
-
-    <!-- Hero Slider -->
-    {% include 'sections/hero_slider.html' %}
-    
-    <!-- Intro Section -->
-    {% include 'sections/intro_section.html' %}
-    
-    <!-- Vehicle Grid -->
-    {% include 'sections/vehicle_grid.html' %}
-    
-    <!-- Destinations Section -->
-    {% include 'sections/destinations_section.html' %}
-    
-    <!-- Video Section -->
-    {% include 'sections/video_section.html' %}
-    
-    <!-- Safety Section -->
-    {% include 'sections/safety_section.html' %}
-    
-    <!-- CTA Section -->
-    {% include 'sections/cta_section.html' %}
-    
-    <!-- Premium Cars Section -->
-    {% include 'sections/premium_cars_section.html' %}
-    
-    <!-- Testimonials Section -->
-    {% include 'sections/testimonials_section.html' %}
-    
-    <!-- Pricing Section -->
-    {% include 'sections/pricing_section.html' %}
-
+    {% include 'mainpage/page_banner.html' %}
+    {% include 'mainpage/destinations.html' %}
 {% endblock %}

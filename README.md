@@ -1,4 +1,4 @@
-# Abroadstours — Django
+# prestigecars — Django
 
 ## 🚀 Запуск проекта локально через Docker
 

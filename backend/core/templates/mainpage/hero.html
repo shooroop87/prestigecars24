@@ -1,0 +1,163 @@
+<div class="page-title style-3">
+    <div class="thumbs">
+        <div class="swiper hero-slider" data-autoplay="true" data-delay="5000">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-inner effect-img-zoom">
+                        <img class="img-zoom" loading="eager" decoding="async" src="https://prestigecars24.com/wp-content/uploads/2023/04/h1-rev-img-1b.jpg" width="1920" height="1000" alt="Luxury Car">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-inner effect-img-zoom">
+                        <img class="img-zoom" loading="eager" decoding="async" src="https://prestigecars24.com/wp-content/uploads/2023/04/h1-rev-img-2b.jpg" width="1920" height="1000" alt="Luxury Car">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-inner effect-img-zoom">
+                        <img class="img-zoom" loading="eager" decoding="async" src="https://prestigecars24.com/wp-content/uploads/2023/04/h1-rev-img-4b.jpg" width="1920" height="1000" alt="Luxury Car">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="tf-container">
+            <h1 class="title text_white qodef-m-title mb_16" style="font-size: 48px; font-weight: 400; line-height: 1.2;">
+                Looking to Rent a Luxury Car?<br>Send A Request
+            </h1>
+            <p class="text_color-1" style="font-size: 16px; margin-bottom: 40px;">
+                Complete the form below and we'll contact you as soon as possible
+            </p>
+        </div>
+    </div>
+    <div class="flat-tab flat-tab-form">
+        <div class="tf-container">
+            <div class="wg-filter">
+                <div class="widget-content-inner active">
+                    <div class="form-title">
+                        <div class="wrap-fill d-flex align-items-end">
+                            <div class="form-field">
+                                <input type="text" placeholder="Choose location" class="form-input-custom">
+                            </div>
+                            <div class="form-field">
+                                <input type="date" class="form-input-custom" value="2026-01-19">
+                            </div>
+                            <div class="form-field">
+                                <input type="time" placeholder="Select time" class="form-input-custom">
+                            </div>
+                            <div class="form-field">
+                                <input type="text" placeholder="Car class" class="form-input-custom">
+                            </div>
+                            <div class="form-field">
+                                <input type="text" placeholder="Drop off location" class="form-input-custom">
+                            </div>
+                            <div class="form-field">
+                                <input type="tel" placeholder="Your phone" class="form-input-custom">
+                            </div>
+                            <div class="form-field">
+                                <button type="submit" class="btn-send-custom">
+                                    <span>+ SEND</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.page-title.style-3 .thumbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.page-title.style-3 .thumbs .swiper,
+.page-title.style-3 .thumbs .swiper-wrapper,
+.page-title.style-3 .thumbs .swiper-slide {
+    height: 100%;
+}
+.page-title.style-3 .thumbs .slide-inner {
+    height: 100%;
+}
+.page-title.style-3 .thumbs .slide-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.page-title.style-3 {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 80px;
+}
+.page-title.style-3 .thumbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+.page-title.style-3 .thumbs .hero-slider {
+    width: 100%;
+    height: 100%;
+}
+.page-title.style-3 .thumbs .swiper-wrapper {
+    height: 100%;
+}
+.page-title.style-3 .thumbs .swiper-slide {
+    height: 100%;
+}
+.page-title.style-3 .thumbs .slide-inner {
+    width: 100%;
+    height: 100%;
+}
+.page-title.style-3 .thumbs .slide-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.page-title.style-3 .content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    margin-bottom: 30px;
+}
+.page-title.style-3 .flat-tab-form {
+    position: relative;
+    z-index: 2;
+}
+.page-title.style-3 .thumbs .slide-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 6s ease-out;
+    transform: scale(1);
+}
+.page-title.style-3 .thumbs .swiper-slide-active .slide-inner img {
+    transform: scale(1.1);
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.hero-slider', {
+        loop: true,
+        autoplay: {
+            delay: 2000,
+            disableOnInteraction: false
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        speed: 1500
+    });
+});
+</script>

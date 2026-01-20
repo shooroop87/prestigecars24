@@ -1,0 +1,86 @@
+<header class="header style-2">
+    <div class="tf-container w-1830">
+        <!-- Top bar -->
+        <div class="header-top d-flex justify-content-between align-items-center py-3">
+            <a href="/" class="site-logo">
+                <img class="logo_header" alt="Prestige Cars 24" height="158" src="https://prestigecars24.com/wp-content/uploads/2025/10/logo.svg">
+            </a>
+            <div class="header-contacts d-flex align-items-center gap-4">
+                <span class="lang-switch text_white" style="font-family: Inconsolata, sans-serif; letter-spacing: 2px; font-size: 12px;">EN</span>
+                <div class="contact-item d-flex align-items-center gap-2">
+                    <i class="icon-phone text_secondary-color-2"></i>
+                    <div class="contact-text">
+                        <a href="tel:+393391069936" class="text_white d-block" style="font-family: Inconsolata, sans-serif; letter-spacing: 1px; font-size: 13px;">+393391069936</a>
+                        <a href="mailto:booking@prestigecars24.com" class="text_white d-block" style="font-family: Inconsolata, sans-serif; letter-spacing: 1px; font-size: 13px;">BOOKING@PRESTIGECARS24.COM</a>
+                    </div>
+                </div>
+                <div class="contact-item d-flex align-items-center gap-2">
+                    <i class="icon-location text_secondary-color-2"></i>
+                    <div class="contact-text">
+                        <span class="text_white d-block" style="font-family: Inconsolata, sans-serif; letter-spacing: 1px; font-size: 13px;">VIA GIACOMO LEOPARDI, 26</span>
+                        <span class="text_white d-block" style="font-family: Inconsolata, sans-serif; letter-spacing: 1px; font-size: 13px;">20123 MILANO MI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main nav -->
+        <div class="header-nav">
+            <nav class="main-menu">
+                <ul class="navigation d-flex gap-4">
+                    <li class="text-menu"><a href="/about" class="nav-link-custom">
+                        <span class="dot">•</span> ABOUT US
+                    </a></li>
+                    <li class="text-menu"><a href="/cars" class="nav-link-custom">
+                        <span class="dot">•</span> CAR RENTAL
+                    </a></li>
+                    <li class="text-menu"><a href="/services" class="nav-link-custom">
+                        <span class="dot">•</span> LUXURY SERVICES
+                    </a></li>
+                    <li class="text-menu"><a href="/locations" class="nav-link-custom">
+                        <span class="dot">•</span> LOCATIONS
+                    </a></li>
+                </ul>
+            </nav>
+            <div class="mobile-button d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile" aria-controls="menu-mobile">
+                <div class="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<style>
+.header-top {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.header-contacts .contact-item {
+    padding-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+.nav-link-custom {
+    font-family: Inconsolata, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.nav-link-custom:hover {
+    color: #bfa37c;
+}
+.nav-link-custom .dot {
+    color: #bfa37c;
+    margin-right: 8px;
+}
+@media (max-width: 991px) {
+    .header-contacts {
+        display: none !important;
+    }
+    .header-nav .navigation {
+        display: none !important;
+    }
+}
+</style>

@@ -1,0 +1,37 @@
+<!-- section-news -->
+<div class="sw-layout">
+    <div class="tf-container tf-spacing-8">
+        <div class="heading-section mb_30">
+            <h3>Последние новости</h3>
+        </div>
+        <div class="swiper" data-preview="3" data-tablet="2" data-mobile-sm="2" data-mobile="1" data-space-lg="30" data-space-md="20" data-space="15">
+            <div class="swiper-wrapper">
+                {% for news in latest_news %}
+                <div class="swiper-slide">
+                    <div class="blog-article-item style-default hover-image-translate">
+                        <div class="article-thumb image-wrap mb_24">
+                            {% if news.featured_image or news.featured_image_url %}
+                            <img loading="lazy" src="{{ news.get_featured_image }}" width="850" height="478" alt="{{ news.title }}">
+                            {% endif %}
+                            <a href="{{ news.get_absolute_url }}" class="overlay-link"></a>
+                        </div>
+                        <div class="article-content">
+                            <div class="meta-post d-flex align-items-center mb_12">
+                                <div class="item text_secondary-color text-caption-1">{{ news.published_at|date:"d.m.Y" }}</div>
+                            </div>
+                            <h5 class="title">
+                                <a href="{{ news.get_absolute_url }}" class="hover-line-text">{{ news.title }}</a>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="swiper-slide">
+                    <p class="text-center text_secondary-color">Новости пока не добавлены</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="sw-dots style-1 sw-pagination-layout text-center mt_24"></div>
+        </div>
+    </div>
+</div>

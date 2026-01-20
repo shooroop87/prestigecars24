@@ -1,0 +1,61 @@
+<!-- section-faq -->
+<div class="section-faqs tf-spacing-8" id="faq">
+    <div class="tf-container">
+        <div class="heading-section mb_30">
+            <h3>Вопросы и ответы</h3>
+        </div>
+    </div>
+    <div class="tf-container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="faq-item">
+                    <ul class="accordion-wrap" id="accordion-faq">
+                        {% for faq in faqs %}
+                        <li class="accordion-item">
+                            <a href="#accordion-faq-{{ faq.id }}" class="accordion-title {% if not forloop.first %}collapsed{% endif %}" data-bs-toggle="collapse" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="accordion-faq-{{ faq.id }}">
+                                <div class="heading">
+                                    <div class="title text-title text_primary-color fw-6">{{ faq.question }}</div>
+                                    <span class="icon icon-CaretDown"></span>
+                                </div>
+                            </a>
+                            <div id="accordion-faq-{{ faq.id }}" class="collapse {% if forloop.first %}show{% endif %}" data-bs-parent="#accordion-faq">
+                                <div class="accordion-faqs-content">
+                                    <p>{{ faq.answer }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% empty %}
+                        <li class="text-center text_secondary-color py-4">
+                            Вопросы пока не добавлены
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar-faq sticky-top">
+                    <form class="form-faq" method="post" action="{% url 'contact_request' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="source" value="faq">
+                        <div class="heading">
+                            <h5 class="mb_8">Задайте вопрос</h5>
+                            <p>Спрашивайте — мы поможем</p>
+                        </div>
+                        <fieldset>
+                            <label for="faq-name" class="text-button text_primary-color fw-7 mb_8">Имя</label>
+                            <input class="" id="faq-name" type="text" placeholder="Ваше имя" name="name" required>
+                        </fieldset>
+                        <fieldset>
+                            <label for="faq-message" class="text-button text_primary-color fw-7 mb_8">Сообщение</label>
+                            <textarea id="faq-message" class="" rows="4" placeholder="Ваше сообщение" name="message" required></textarea>
+                        </fieldset>
+                        <button class="tf-btn btn-bg-1 btn-px-28 w-full" type="submit">
+                            <span>Отправить</span>
+                            <span class="bg-effect"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

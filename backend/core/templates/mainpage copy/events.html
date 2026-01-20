@@ -1,0 +1,53 @@
+<!-- section-events -->
+<div class="section-career tf-spacing-8" id="events">
+    <div class="tf-container">
+        <div class="wrap-heading-section d-flex justify-content-between align-items-center mb_30">
+            <div class="heading-section">
+                <h3>Мероприятия</h3>
+            </div>
+            <a href="#" class="tf-btn btn-bg-1 btn-px-32">
+                <span>Все мероприятия</span>
+                <span class="bg-effect"></span>
+            </a>
+        </div>
+    </div>
+    <div class="tf-container sw-layout">
+        <div class="swiper" data-preview="2" data-tablet="2" data-mobile="1" data-space-lg="30" data-space-md="20" data-space="15">
+            <div class="swiper-wrapper">
+                {% for event in upcoming_events %}
+                <div class="swiper-slide">
+                    <div class="career-item">
+                        <div class="content">
+                            <div class="heading">
+                                <div class="text-title fw-6 mb_8 text_primary-color">
+                                    <a href="{{ event.get_absolute_url }}" class="link">{{ event.title }}</a>
+                                </div>
+                                <ul class="d-flex">
+                                    <li class="d-flex align-items-center gap_4 text_secondary-color">
+                                        <i class="icon-MapPin"></i>{{ event.location_name }}
+                                    </li>
+                                    <li class="d-flex align-items-center gap_4 text_secondary-color">
+                                        <i class="icon-CalendarBlank"></i>{{ event.event_date|date:"d.m.Y" }} в {{ event.event_date|time:"H:i" }}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text_secondary-color">{{ event.short_description|truncatewords:15 }}</div>
+                        </div>
+                        <div class="wrap-btn">
+                            <a href="{{ event.get_absolute_url }}" class="tf-btn btn-border btn-px-28">
+                                <span class="text-button-small">Подробнее</span>
+                                <span class="bg-effect"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="swiper-slide">
+                    <p class="text-center text_secondary-color">Мероприятия пока не запланированы</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="sw-dots style-1 sw-pagination-layout justify-content-center d-flex mt_24"></div>
+        </div>
+    </div>
+</div>

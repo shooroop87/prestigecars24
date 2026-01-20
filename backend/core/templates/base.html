@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><![endif]-->
+    <title>{% block title %}prestigecars{% endblock %}</title>
+
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    <meta name="author" content="prestigecars.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/odometer.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sib-styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Inconsolata:wght@200..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'icons/icomoon/style.css' %}">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'images/favicon.svg' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- wrapper -->
+    <div id="wrapper" class="counter-scroll">
+        {% include 'includes/header.html' %}
+
+        <!-- main-content -->
+        <div class="main-content" style="background-color: #0c1315;">
+            {% block content %}{% endblock %}
+        </div>
+        <!-- End main-content -->
+
+        {% include 'includes/footer.html' %}
+
+    </div>
+    <!-- End wrapper -->
+
+    {% include 'includes/mobile_menu.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+    {% include 'includes/auth_popup.html' %}
+
+    {% block extra_js %}
+        <script>
+// Auth popup form switching
+document.addEventListener('DOMContentLoaded', function() {
+    const loginContainer = document.getElementById('login-form-container');
+    const registerContainer = document.getElementById('register-form-container');
+    
+    // Switch forms
+    document.querySelectorAll('[data-form]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const form = this.dataset.form;
+            
+            if (form === 'register') {
+                loginContainer.style.display = 'none';
+                registerContainer.style.display = 'block';
+            } else if (form === 'login') {
+                registerContainer.style.display = 'none';
+                loginContainer.style.display = 'block';
+            }
+        });
+    });
+    
+    // Reset on modal close
+    document.getElementById('authModal').addEventListener('hidden.bs.modal', function() {
+        loginContainer.style.display = 'block';
+        registerContainer.style.display = 'none';
+    });
+    
+    // Open register form directly
+    document.querySelectorAll('[data-bs-target="#authModal"][data-form="register"]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            setTimeout(() => {
+                loginContainer.style.display = 'none';
+                registerContainer.style.display = 'block';
+            }, 100);
+        });
+    });
+});
+</script>
+    
+    {% endblock %}
+
+
+
+</body>
+
+</html>

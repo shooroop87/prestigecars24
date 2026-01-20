@@ -1,141 +1,61 @@
 {% load static %}
-{% load i18n %}
-{% load static %}
-
-<header id="qodef-page-header" role="banner">
-    <div id="qodef-page-header-inner" class="qodef-skin--light">
-        
-        <!-- Top Area -->
-        <div class="qodef-header-section qodef--top">
-            <div class="qodef-section-inner">
-                <a itemprop="url" class="qodef-header-logo-link qodef-height--set qodef-source--image" href="{% url 'core:home' %}" rel="home">
-                    <h1 class="logo-text2">PRESTIGECARS24</h1>
-                </a>
-                
-                <div class="qodef-widget-holder qodef--one">
-                    <!-- Phone Widget -->
-                    <div class="widget widget_luxedrive_core_icon_with_text">
-                        <div class="qodef-shortcode qodef-m qodef-icon-with-text qodef-layout--before-content">
-                            <div class="qodef-m-icon-wrapper">
-                                <span class="qodef-shortcode qodef-m qodef-icon-holder" style="top: -12px">
-                                    <a href="tel:+390266988508" target="_self">
-                                        <span class="qodef-icon-elegant-icons icon_phone qodef-icon" style="color: #ffffff;font-size: 13px"></span>
-                                    </a>
-                                </span>
-                            </div>
-                            <div class="qodef-m-content">
-                                <h3 class="qodef-m-title" style="margin: 0px 0px 0px -8px;color: #ffffff">
-                                    <a href="tel:+390266988508" target="_self">
-                                        <span class="qodef-m-title-text">+39 026 698 8508</span>
-                                    </a>
-                                </h3>
-                                <div class="qodef-m-text" style="margin: -5px 0px 0px -8px;color: #ffffff">
-                                    <a href="mailto:booking@prestigecars24.com" target="_self">
-                                        booking@prestigecars24.com
-                                    </a>
-                                </div>
-                            </div>
+<!-- .header -->
+<header class="header style-default header-sticky">
+    <div class="tf-container w-xxl">
+        <div class="row">
+            <div class="col-12">
+                <div class="header-inner">
+                    <a href="/" class="site-logo">
+                        <img class="logo_header" alt="prestigecars24" width="292" height="48" src="/wp-content/uploads/2025/logo.svg">
+                    </a>
+                    <nav class="main-menu">
+                        <ul class="navigation">
+                            <li class="text-menu current-menu">
+                                <a href="#" class="splitting"><span class="text" data-splitting>About Us</span></a>
+                            </li>
+                            <li class="text-menu">
+                                <a href="#" class="splitting"><span class="text" data-splitting>Car rental</span></a>
+                            </li>
+                            <li class="text-menu">
+                                <a href="#" class="splitting"><span class="text" data-splitting>Luxury services</span></a>
+                            </li>
+                            <li class="text-menu">
+                                <a href="#" class="splitting"><span class="text" data-splitting>Locations</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header-right d-flex align-items-center gap_20">
+                        <div class="text-button text_primary-color">
+                            <a href="tel:+393391069936" class="link">+39 339 106 9936</a>
                         </div>
-                    </div>
-
-                    <!-- Address Widget -->
-                    <div class="widget widget_luxedrive_core_icon_with_text">
-                        <div class="qodef-shortcode qodef-m qodef-icon-with-text qodef-layout--before-content">
-                            <div class="qodef-m-icon-wrapper">
-                                <span class="qodef-shortcode qodef-m qodef-icon-holder" style="top: -12px">
-                                    <a href="https://www.google.com/maps/place/Via+Roberto+Lepetit,+18,+20124+Milano+MI" target="_blank">
-                                        <span class="qodef-icon-elegant-icons icon_pin qodef-icon" style="color: #ffffff;font-size: 13px"></span>
-                                    </a>
-                                </span>
-                            </div>
-                            <div class="qodef-m-content">
-                                <h3 class="qodef-m-title" style="margin: 0px 0px 0px -10px;color: #ffffff">
-                                    <a href="https://www.google.com/maps/place/Via+Roberto+Lepetit,+18,+20124+Milano+MI" target="_blank">
-                                        <span class="qodef-m-title-text">Via Roberto Lepetit, 18</span>
-                                    </a>
-                                </h3>
-                                <div class="qodef-m-text" style="margin: -5px 0px 0px -10px;color: #ffffff">
-                                    <a href="https://www.google.com/maps/place/Via+Roberto+Lepetit,+18,+20124+Milano+MI" target="_blank">
-                                        20124 Milano MI
-                                    </a>
-                                </div>
-                            </div>
+                        <a href="mailto:booking@prestigecars24.com" class="tf-btn btn-bg-primary btn-px-32">
+                            <span>Book Now</span>
+                            <span class="bg-effect"></span>
+                        </a>
+                        <div class="mobile-button d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile" aria-controls="menu-mobile">
+                            <div class="burger"><span></span><span></span><span></span></div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Area / Navigation -->
-        <div class="qodef-header-section qodef--bottom">
-            <div class="qodef-section-inner">
-                <nav class="qodef-header-navigation" role="navigation">
-                    <ul id="menu-main-menu-1" class="menu">
-                        <li class="menu-item">
-                            <a href="{% url 'core:about' %}"><span class="qodef-menu-item-text">About Us</span></a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#"><span class="qodef-menu-item-text">Car rental</span></a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#"><span class="qodef-menu-item-text">Luxury Services</span></a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#"><span class="qodef-menu-item-text">Locations</span></a>
-                        </li>
-                    </ul>
-                </nav>
-                
-                <div class="qodef-widget-holder qodef--two">
-                    <div class="widget widget_luxedrive_core_side_area_opener">
-                        <a href="javascript:void(0)" class="qodef-opener-icon qodef-m qodef-side-area-opener">
-                            <span class="qodef-m-icon qodef--open">
-                                <svg class="qodef-svg--menu" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50px" height="8px" viewBox="0 0 50 8">
-                                    <line x1="0" y1="0.5" x2="50" y2="0.5"></line>
-                                    <line x1="50" y1="7.5" x2="0" y2="7.5"></line>
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sticky Header -->
-        <div class="qodef-header-sticky qodef-custom-header-layout qodef-skin--light qodef-appearance--down">
-            <div class="qodef-header-sticky-inner">
-                <a class="qodef-header-logo-link" href="{% url 'core:home' %}">
-                    <h1 class="logo-text">PRESTIGECARS24</h1>
-                </a>
-                <nav class="qodef-header-navigation">
-                    <ul class="menu">
-                        <li class="menu-item">
-                            <a href="{% url 'core:about' %}"><span class="qodef-menu-item-text">About Us</span></a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#"><span class="qodef-menu-item-text">Car Rental</span></a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#"><span class="qodef-menu-item-text">Luxury Services</span></a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#"><span class="qodef-menu-item-text">Locations</span></a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="qodef-widget-holder qodef--one">
-                    <div class="widget widget_luxedrive_core_side_area_opener">
-                        <a href="javascript:void(0)" class="qodef-opener-icon qodef-m qodef-side-area-opener">
-                            <span class="qodef-m-icon qodef--open">
-                                <svg class="qodef-svg--menu" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50px" height="8px" viewBox="0 0 50 8">
-                                    <line x1="0" y1="0.5" x2="50" y2="0.5"></line>
-                                    <line x1="50" y1="7.5" x2="0" y2="7.5"></line>
-                                </svg>
-                            </span>
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </header>
+<style>
+@media (max-width: 768px) {
+    #wrapper > header.header.style-3 > div > div > div > div > div > a {
+        display: none !important;
+    }
+}
+.header.style-3 {
+    z-index: 9998 !important;
+}
+
+.top-bar {
+    z-index: 99999 !important;
+}
+
+.menu-lang {
+    z-index: 999999 !important;
+}
+</style>
