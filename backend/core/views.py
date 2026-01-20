@@ -1,9 +1,4 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.db.models import Count
-from django.db.models import Prefetch
-
-from django.views.decorators.http import require_POST
+from django.shortcuts import render
 
 
 def index(request):

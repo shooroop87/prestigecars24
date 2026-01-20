@@ -2182,12 +2182,6 @@ a:focus, a:hover {
     height: 42px;
   }
 }
-
-@media (min-width: 1441px) {
-  .header.style-2 .main-menu .navigation {
-    margin-left: 70px;
-  }
-}
 .header.style-3 {
   position: absolute;
   left: 0;
@@ -2290,21 +2284,6 @@ a:focus, a:hover {
 }
 .main-menu .navigation > li > a {
   position: relative;
-}
-.main-menu .navigation > li > a::before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: var(--Primary);
-  bottom: 0;
-  left: auto;
-  right: 0;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
 }
 .main-menu .navigation > li.has-child > a::after {
   right: 0;

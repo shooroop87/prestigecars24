@@ -51,22 +51,7 @@ services:
       redis:
         condition: service_healthy
     restart: unless-stopped
-
-  celery:
-    user: "0:0"
-    image: egorovdocker/prestigecars_backend
-    env_file: .env
-    environment:
-      - DOCKER_ENV=true
-    volumes:
-      - media:/app/media/
-    command: celery -A config worker -l info -B
-    depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    restart: unless-stopped
+  
     
   gateway:
     image: egorovdocker/prestigecars_gateway
