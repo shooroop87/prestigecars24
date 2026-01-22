@@ -1,0 +1,200 @@
+{% extends 'base2.html' %}
+{% load static i18n %}
+
+{% block title %}{{ car.name }} - Prestige Cars 24{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+<style>
+.car-detail-page .main-content {
+    background: #fff !important;
+}
+.car-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.car-tag-item {
+    padding: 8px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+.services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.services-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+}
+.services-list li i {
+    color: #bfa37c;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="car-detail-page">
+    <div class="main-content" style="background-color: #fff;">
+        <div class="properties-details">
+            <div class="tf-container tf-spacing-7 tf-spacing-7-mobile">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="properties-title ">
+                                <div class="d-flex align-items-center justify-content-between flex-wrap gap_12">
+                                    <div>
+                                        <div class="wrap-tag d-flex gap_8 mb_12">
+                                            <div class="tag categoreis text-button-small text_primary-color">
+                                               {{ car.category.name }}
+                                            </div>
+                                        </div>
+                                        <h4>{{ car.name }}</h4>
+                                    </div>
+                                    <h4 class="price">€1500<span
+                                            class="text_secondary-color text-body-1">/day</span>
+                                    </h4>
+                                </div>
+                            </div>
+                        <!-- Gallery -->
+                        <div class="wrap-thumbs mb_30">
+                            <div class="thumb-main-2 mb_20">
+                                <a href="{{ car.main_image }}" data-fancybox="gallery" class="img-style">
+                                    <img width="800" height="500" loading="eager" src="{{ car.main_image }}" alt="{{ car.name }}" class="gallery-thumb"">
+                                </a>
+                            </div>
+                            {% if car.image_2 or car.image_3 or car.image_4 %}
+                            <div class="d-flex gap_15">
+                                {% if car.image_2 %}
+                                <a href="{{ car.image_2 }}" data-fancybox="gallery" style="flex:1;">
+                                    <img src="{{ car.image_2 }}" alt="{{ car.name }}" class="gallery-thumb">
+                                </a>
+                                {% endif %}
+                                {% if car.image_3 %}
+                                <a href="{{ car.image_3 }}" data-fancybox="gallery" style="flex:1;">
+                                    <img src="{{ car.image_3 }}" alt="{{ car.name }}" class="gallery-thumb">
+                                </a>
+                                {% endif %}
+                                {% if car.image_4 %}
+                                <a href="{{ car.image_4 }}" data-fancybox="gallery" style="flex:1;">
+                                    <img src="{{ car.image_4 }}" alt="{{ car.name }}" class="gallery-thumb">
+                                </a>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <!-- Description -->
+                        <div class="properties-description mb_30">
+                            <h5 class="properties-title mb_20">Description</h5>
+                            <div class="text-body-2">{{ car.description|linebreaks }}</div>
+                        </div>
+                        <!-- Services -->
+                        <div class="properties-services mb_30">
+                            <h5 class="properties-title mb_20">Service Offered In This Vehicle</h5>
+                            <p class="text-body-default mb_20">Whether for exclusive events, luxury travel, or unforgettable experiences, the {{ car.name }} offers a premium range of services.</p>
+                            <ul class="services-list">
+                                {% for feature in car.get_features_list %}
+                                <li><i class="icon-CheckCircle"></i> {{ feature }}</li>
+                                {% empty %}
+                                <li><i class="icon-CheckCircle"></i> Premium Luxury Experience</li>
+                                <li><i class="icon-CheckCircle"></i> 24/7 Customer Support</li>
+                                <li><i class="icon-CheckCircle"></i> Airport Delivery Available</li>
+                                <li><i class="icon-CheckCircle"></i> Full Insurance Included</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-4">
+                        <div class="right sticky-top">
+                            <div class="box-sellers mb_30">
+                                <h5 class="mb_20">Features</h5>
+                                
+                                <!-- Tags -->
+                                <div class="car-tags-list">
+                                    <span class="car-tag-item">{{ car.seats }} Seats</span>
+                                    <span class="car-tag-item">{{ car.transmission }}</span>
+                                    {% for tag in car.get_tags_list %}
+                                    <span class="car-tag-item">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <!-- Price -->
+                                <div class="mb_24">
+                                    <h6 class="mb_12">Prices</h6>
+                                    <div style="font-size: 42px; font-weight: 300; color: #0c1315;">
+                                        <sup style="font-size: 20px;">€</sup>{{ car.price_per_day|floatformat:0 }}<span style="font-size: 16px; color: #666; font-weight: 400;"> / Per day</span>
+                                    </div>
+                                </div>
+
+                                <hr class="mb_24">
+
+                                <!-- Buttons -->
+                                <a href="https://wa.me/393391069936?text=Hello!%20I%20want%20to%20book%20{{ car.name|urlencode }}" target="_blank" class="tf-btn btn-bg-1 w-full mb_12">
+                                    <span class="d-flex align-items-center gap_8"><i class="icon-ChatCircleDots"></i>Chat via WhatsApp</span>
+                                    <span class="bg-effect"></span>
+                                </a>
+                                <a href="tel:+393391069936" class="tf-btn w-full mb_12">
+                                    <span class="d-flex align-items-center gap_8"><i class="icon-PhoneCall"></i>Call +39 339 106 9936</span>
+                                    <span class="bg-effect"></span>
+                                </a>
+                                <a href="mailto:booking@prestigecars24.com" class="tf-btn w-full">
+                                    <span class="d-flex align-items-center gap_8"><i class="icon-EnvelopeSimple"></i>Email Us</span>
+                                    <span class="bg-effect"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+div.properties-description.mb_30 > div > p {
+    font-weight: 400;
+}
+div.properties-services.mb_30 > p  {
+    font-weight: 400;
+    font-size: 16px;
+}
+.is-horizontal .f-carousel__nav .f-button.is-prev, .is-horizontal .fancybox__nav .f-button.is-prev {
+    overflow: hidden;
+}
+.is-horizontal .f-carousel__nav .f-button.is-next, .is-horizontal .fancybox__nav .f-button.is-next {
+    overflow: hidden;
+}
+.gallery-thumb {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.tf-spacing-7-mobile {
+    padding-top: 40px;
+}
+@media (max-width: 768px) {
+    .gallery-thumb {
+        height: 100px;
+    }
+    .tf-spacing-7-mobile {
+        padding-top: 20px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>Fancybox.bind("[data-fancybox]", {});</script>
+{% endblock %}

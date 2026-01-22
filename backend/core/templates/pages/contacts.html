@@ -1,0 +1,243 @@
+{% extends 'base3.html' %}
+{% load static i18n %}
+
+{% block title %}Contact Us - Prestige Cars 24 | Luxury Car Rental Milan{% endblock %}
+
+{% block meta_description %}Contact Prestige Cars 24 for luxury car rental in Milan. Call +39 339 106 9936 or email booking@prestigecars24.com. Visit us at Via Giacomo Leopardi 26, Milano.{% endblock %}
+
+{% block content %}
+<!-- page-title -->
+<div class="page-title style-default">
+    <div class="thumbs">
+        <img src="{% static 'images/inner-c-img-1.jpg' %}"> alt="Contact Prestige Cars 24">
+    </div>
+    <div class="content text-center">
+        <div class="tf-container">
+            <h1 class="title text_white mb_12">Contact Us</h1>
+            <ul class="breadcrumb justify-content-center text-button fw-4">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End page-title -->
+
+<!-- main-content -->
+<div class="main-content" style="background-color: #0c1315;">
+
+    <!-- section-contact -->
+    <div class="tf-container section-contact tf-spacing-1">
+
+        <!-- map -->
+        <div class="map-box">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.4!2d9.1698!3d45.4669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c14d1f4a4b7b%3A0x4f5c6d8e9a0b1c2d!2sVia%20Giacomo%20Leopardi%2C%2026%2C%2020123%20Milano%20MI%2C%20Italy!5e0!3m2!1sen!2sus!4v1234567890"
+                width="100%" 
+                height="450" 
+                style="border:0; border-radius: 12px;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <!-- End map -->
+
+        <!-- form-contact -->
+        <div class="row tf-spacing-1 pb-0">
+            <div class="col-md-6">
+                <div class="box-contact">
+                    <div class="heading mb_23">
+                        <h4 class="mb_8 text_white">Reach Out To Us</h4>
+                        <p class="text_color-1">We're here to assist with any questions about luxury car rental in Milan and beyond.</p>
+                    </div>
+                    <ul class="info d-grid gap_20 mb_36">
+                        <li>
+                            <i class="icon icon-MapPin text_secondary-color-2"></i>
+                            <div class="content">
+                                <div class="text-title text_white mb_4">Our Address:</div>
+                                <p class="text_color-1">Via Giacomo Leopardi, 26<br>20123 Milano MI, Italy</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="icon icon-PhoneCall text_secondary-color-2"></i>
+                            <div class="content">
+                                <div class="text-title text_white mb_4">Contact Us:</div>
+                                <p class="text_color-1"><a href="tel:+393391069936" class="link link_white-2 text_color-1">+39 339 106 9936</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="icon icon-EnvelopeSimple text_secondary-color-2"></i>
+                            <div class="content">
+                                <div class="text-title text_white mb_4">Email Address:</div>
+                                <a href="mailto:booking@prestigecars24.com" class="link link_white-2 text_secondary-color-2">booking@prestigecars24.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="icon icon-Alarm text_secondary-color-2"></i>
+                            <div class="content">
+                                <div class="text-title text_white mb_4">Working Hours:</div>
+                                <p class="text_color-1">Mon - Sun: 09:00 - 23:00</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="">
+                        <h5 class="mb_12 text_white">Follow Us:</h5>
+                        <ul class="tf-social d-flex gap_24">
+                                    <li><a href="#" class="icon-FacebookLogo"></a></li>
+                                    <li><a href="#" class="icon-XLogo"></a></li>
+                                    <li><a href="#" class="icon-TiktokLogo"></a></li>
+                                    <li><a href="#" class="icon-InstagramLogo"></a></li>
+                                    <li><a href="#" class="icon-YoutubeLogo"></a></li>
+                                </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form class="form-contact" method="post" action="{% url 'index' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="source" value="contact_page">
+                    <div class="heading mb_24">
+                        <h4 class="mb_8 text_white">Get In Touch</h4>
+                        <p class="text_color-1">We'd love to hear from you! Send us a message and we'll respond as soon as possible.</p>
+                    </div>
+                    <div class="wrap mb_24">
+                        <div class="tf-grid-layout md-col-2 mb_20">
+                            <fieldset class="">
+                                <label for="firstName" class="text-button text_white fw-7 mb_8">First Name</label>
+                                <input class="form-input-dark" id="firstName" type="text" placeholder="First Name" name="first_name" required>
+                            </fieldset>
+                            <fieldset class="">
+                                <label for="lastName" class="text-button text_white fw-7 mb_8">Last Name</label>
+                                <input class="form-input-dark" id="lastName" type="text" placeholder="Last Name" name="last_name" required>
+                            </fieldset>
+                        </div>
+                        <div class="tf-grid-layout md-col-2 mb_20">
+                            <fieldset class="">
+                                <label for="email" class="text-button text_white fw-7 mb_8">Email</label>
+                                <input class="form-input-dark" id="email" type="email" placeholder="Enter your email" name="email" required>
+                            </fieldset>
+                            <fieldset class="">
+                                <label for="phone" class="text-button text_white fw-7 mb_8">Phone Number</label>
+                                <input class="form-input-dark" id="phone" type="tel" placeholder="Enter your phone" name="phone" required>
+                            </fieldset>
+                        </div>
+                        <fieldset>
+                            <label for="message" class="text-button text_white fw-7 mb_8">Message</label>
+                            <textarea id="message" class="form-input-dark" rows="4" placeholder="Tell us about your luxury car rental needs..." name="message" required></textarea>
+                        </fieldset>
+                    </div>
+                    <button class="qodef-button qodef-html--link qodef-layout--outlined w-full" type="submit">
+                        <span>Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- End form-contact -->
+
+    </div>
+    <!-- End section-contact -->
+
+</div>
+<!-- End main-content -->
+
+<style>
+.page-title.style-default {
+    position: relative;
+}
+.page-title.style-default .thumbs {
+  min-height: 100px;
+  max-height: 200px;
+}
+.page-title.style-default .thumbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+@media (min-width: 768px) {
+  .page-title.style-default .thumbs {
+    min-height: 100px;
+    max-height: 300px;
+  }
+}
+.page-title.style-default .thumbs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.page-title.style-default .thumbs::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.page-title.style-default .content {
+    position: relative;
+    z-index: 1;
+    padding: 100px 0;
+}
+
+.map-box {
+    margin-bottom: 40px;
+}
+.map-box iframe {
+    border-radius: 12px;
+}
+
+.box-contact .info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+.box-contact .info li .icon {
+    font-size: 24px;
+    margin-top: 4px;
+}
+.tf-social li a {
+    font-size: 24px;
+    transition: color 0.3s;
+}
+.tf-social li a:hover {
+    color: #bfa37c !important;
+}
+
+.form-input-dark {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+.form-input-dark::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+.form-input-dark:focus {
+    outline: none;
+    border-color: #bfa37c;
+}
+
+.form-contact .qodef-button {
+    width: 100%;
+    justify-content: center;
+    padding: 18px 40px;
+    background-color: #bfa37c;
+}
+
+@media (max-width: 768px) {
+    .page-title.style-default .content {
+        padding: 60px 0;
+    }
+    .box-contact {
+        margin-bottom: 40px;
+    }
+}
+</style>
+{% endblock %}

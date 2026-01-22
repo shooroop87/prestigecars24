@@ -620,8 +620,8 @@ h6,
 
 h1,
 .h1 {
-  font-size: 62px;
-  line-height: 72px;
+  font-size: 52px;
+  line-height: 62px;
 }
 
 h2,
@@ -698,6 +698,7 @@ h6,
 .text-body-2 {
   font-size: 18px;
   line-height: 28px;
+  font-weight: 400;
 }
 
 .text-body-3 {
@@ -714,7 +715,7 @@ h6,
 .text-button-small {
   font-size: 14px;
   line-height: 24px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .text-label {
@@ -869,6 +870,13 @@ h6,
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   color: inherit;
+}
+.link_white {
+  color: #fff !important;
+  font-family: "Inconsolata", sans-serif;
+}
+.link_white-2 {
+  color: #fff !important;
 }
 .link:hover {
   color: var(--Primary) !important;
@@ -1756,7 +1764,7 @@ a:focus, a:hover {
   border-radius: 50%;
   gap: 12;
   font-size: 24px;
-  color: var(--Text-primary);
+  color: #fff;
 }
 .tf-social a:hover {
   background-color: var(--Text-primary);
@@ -1840,7 +1848,6 @@ a:focus, a:hover {
   position: relative;
   box-shadow: 0px 10px 25px 0px rgba(72, 95, 119, 0.1019607843);
   border-radius: 16px;
-  padding: 28px;
   z-index: 999;
 }
 .wg-filter .form-title {
@@ -1914,12 +1921,82 @@ a:focus, a:hover {
     align-items: unset;
   }
 }
-@media (max-width: 767px) {
-  .wg-filter {
-    padding: 28px 15px;
-  }
+/* Общие стили для кнопок */
+.social-button {
+    position: fixed;
+    right: 13px;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    color: #fff;
+    text-align: center;
+    line-height: 48px;
+    font-size: 55px;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+.social-button a {
+    color: #fff;
+}
+.social-button:before,
+.social-button:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: -20px;
+    right: -20px;
+    top: -20px;
+    bottom: -20px;
+    border-radius: 50%;
+    animation: animate 1.5s linear infinite;
+    opacity: 0;
+    backface-visibility: hidden; 
+}
+.social-button:after {
+    animation-delay: .5s;
 }
 
+/* WhatsApp кнопка */
+.whatsapp {
+    bottom: 90px; /* выше Telegram */
+    background: #25D366;
+}
+.whatsapp:before,
+.whatsapp:after {
+    border: 1px solid #25D366;
+}
+
+/* Telegram кнопка */
+.telegram {
+    bottom: 20px;
+    background: #0088cc;
+}
+.telegram:before,
+.telegram:after {
+    border: 1px solid #0088cc;
+}
+
+/* Анимация */
+@keyframes animate {
+    0%   { transform: scale(0.5); opacity: 0; }
+    50%  { opacity: 1; }
+    100% { transform: scale(1.2); opacity: 0; }
+}
+
+/* Мобильная адаптация */
+@media (max-width : 800px) {  
+  .whatsapp {
+      bottom: 55px; /* выше телеграма */
+      right: 10px;
+  }
+}
+.fa-whatsapp:before {
+    content: "\f232";
+}
+.fa.fa-facebook-official, .fa.fa-pinterest-p, .fa.fa-whatsapp {
+    font-family: "Font Awesome 6 Brands";
+    font-weight: 400;
+}
 .wd-search-form {
   background-color: var(--White);
   padding: 28px 20px;
@@ -2283,7 +2360,13 @@ a:focus, a:hover {
   width: 100%;
 }
 .main-menu .navigation > li > a {
-  position: relative;
+  font-family: "Inconsolata", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform:uppercase;
+  letter-spacing: .25em;
 }
 .main-menu .navigation > li.has-child > a::after {
   right: 0;
@@ -2307,6 +2390,9 @@ a:focus, a:hover {
   left: 0;
   right: auto;
 }
+.main-menu .navigation > li:hover .dot {
+  font-size: 20px;
+}
 .main-menu .navigation > li:hover > ul {
   -webkit-transform: scaleY(1);
   -ms-transform: scaleY(1);
@@ -2325,7 +2411,7 @@ a:focus, a:hover {
 }
 @media (min-width: 1441px) {
   .main-menu .navigation {
-    gap: 30px;
+    gap: 50px;
   }
 }
 @media (max-width: 1199px) {
@@ -2334,9 +2420,18 @@ a:focus, a:hover {
   }
 }
 
+.link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(12, 19, 21);
+}
+
 .mobile-button {
   cursor: pointer;
   padding: 18px 0;
+  color: #fff;
 }
 .mobile-button .burger {
   position: relative;
@@ -2346,13 +2441,13 @@ a:focus, a:hover {
 .mobile-button .burger span {
   display: block;
   position: relative;
-  height: 3px;
+  height: 2px;
   width: 25px;
   transition: 0.5s;
-  background-color: var(--Text-primary);
+  background-color: #fff;
 }
 .mobile-button .burger span:not(:first-child) {
-  margin-top: 3px;
+  margin-top: 5px;
 }
 .mobile-button .burger span:nth-of-type(1) {
   top: 0px;
@@ -2666,13 +2761,13 @@ a:focus, a:hover {
 }
 .mobile-nav-wrap .mb-body .support .mb-info li span {
   margin-left: 5px;
-  font-weight: 600;
-  color: var(--Text-primary);
+  font-weight: 400;
+  color: #bfa37c;
 }
 .mobile-nav-wrap .mb-body .support .mb-info li a {
   margin-left: 5px;
   font-weight: 400;
-  color: var(--Text-primary);
+  color: #bfa37c;
 }
 .mobile-nav-wrap .tf-btn {
   margin-bottom: 24px;
@@ -3088,7 +3183,7 @@ a:focus, a:hover {
   width: max-content;
   height: 40px;
   padding: 0 20px;
-  background-color: var(--Primary);
+  background-color: #0c1316;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -3098,12 +3193,12 @@ a:focus, a:hover {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  color: #fff;
   font-size: 16px;
   line-height: 26px;
-  font-weight: 700;
+  font-weight: 400;
 }
 .tf-btn span {
-  color: var(--Text-primary);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -3126,11 +3221,10 @@ a:focus, a:hover {
   z-index: -1;
 }
 .tf-btn.btn-bg-1 {
-  background-color: var(--Text-primary);
+  background-color: var(--Primary);
+  color: #000;
 }
-.tf-btn.btn-bg-1 span {
-  color: var(--White);
-}
+
 .tf-btn.btn-bg-1 .bg-effect {
   background-color: var(--Primary);
 }
@@ -5170,7 +5264,6 @@ form textarea {
 .mapbox-2,
 .mapbox-3 {
   width: 100%;
-  height: 600px;
   overflow: hidden;
   border-radius: 24px;
   position: relative;
@@ -6657,7 +6750,7 @@ tr {
 
 .box-contact {
   padding: 40px;
-  border-radius: 16px;
+  border-radius: 7px;
   border: 1px solid var(--Line);
 }
 .box-contact .info li {
@@ -8367,18 +8460,15 @@ tr {
   width: 100%;
   object-fit: cover;
 }
-.page-title.style-default .thumbs {
-  background-color: var(--Text-primary);
-  min-height: 300px;
-}
 .page-title.style-default .thumbs img {
   width: 100%;
   opacity: 0.5;
-  min-height: 300px;
   object-fit: cover;
 }
 .page-title.style-default .title {
   margin-bottom: 12px;
+  font-weight: 400;
+  font-family: Epilogue, sans-serif;
 }
 .page-title.style-default .content {
   position: absolute;
@@ -8460,9 +8550,17 @@ tr {
 .page-title.style-2 .wg-filter {
   padding: 21px 28px 28px;
 }
+.page-title.style-default .thumbs {
+  min-height: 100px;
+  max-height: 200px;
+}
 @media (min-width: 768px) {
   .page-title.style-2 .thumbs {
     height: 600px;
+  }
+  .page-title.style-default .thumbs {
+    min-height: 100px;
+    max-height: 300px;
   }
 }
 @media (min-width: 992px) {
@@ -8490,13 +8588,13 @@ tr {
   min-height: 730px;
   object-fit: cover;
 }
-.page-title.style-3 .flat-tab-form {
-  margin-top: -127px;
-}
 @media (min-width: 768px) {
   .page-title.style-3 .content {
     margin-top: 170px;
   }
+}
+.link_font {
+  font-family: "Inconsolata", sans-serif;
 }
 .page-title.style-4 .page-inner {
   display: flex;
@@ -8841,7 +8939,7 @@ tr {
 .section-faqs .accordion-item:not(:last-child) {
   padding-bottom: 19px;
   margin-bottom: 16px;
-  border-bottom: 1px solid var(--Line);
+  border-bottom: 1px solid rgba(234, 229, 229, 0.2);
 }
 .section-faqs .faq-item:not(:last-child) {
   margin-bottom: 60px;
@@ -9499,7 +9597,6 @@ tr {
   border-radius: unset;
 }
 .properties-details .thumb-main-2 .img-style {
-  height: 465px;
   width: 100%;
 }
 .properties-details .thumb-main-2 .img-style img {
@@ -9557,8 +9654,7 @@ tr {
     flex-direction: row;
   }
   .properties-details .thumb-main-2 .img-style {
-    padding: 0 15px;
-    height: 350px;
+    padding: 0;
   }
 }
 

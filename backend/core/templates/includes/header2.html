@@ -1,0 +1,73 @@
+{% load static i18n %}
+<header class="header style-default" style="background-color: #0c1315;">
+    <div class="tf-container w-xxl">
+        <div class="row">
+            <div class="col-12">
+                <div class="header-inner">
+                    <a href="{% url 'index' %}" class="site-logo">
+                        <img class="logo_header" alt="Prestige Cars 24" src="{% static 'images/logo-color.svg' %}">
+                    </a>
+                    <nav class="main-menu">
+                        <ul class="navigation">
+                            <li class="text-menu"><a href="{% url 'index' %}#about" class="toggle link_white splitting">
+                                    <span class="text" data-splitting="">About Us</span>
+                                    <span class="text" data-splitting="">About Us</span>
+                                </a>
+                            </li>
+                            <li class="text-menu"><a href="{% url 'index' %}#carrental" class="link-no-action link_white toggle splitting">
+                                    <span class="text" data-splitting="">Car Rental</span>
+                                    <span class="text" data-splitting="">Car Rental</span>
+                                </a>
+                            </li>
+                            <li class="text-menu"><a href="https://wa.me/+393391069936" class="link-no-action link_white toggle splitting">
+                                    <span class="text" data-splitting="">Luxury Services</span>
+                                    <span class="text" data-splitting="">Luxury Services</span>
+                                </a>
+                            </li>
+                            <li class="text-menu"><a href="{% url 'index' %}#locations" class="link-no-action link_white toggle splitting">
+                                    <span class="text" data-splitting="">Locations</span>
+                                    <span class="text" data-splitting="">Locations</span>
+                                </a>
+                            </li>
+                            <li class="text-menu"><a href="/contacts/" class="toggle link_white splitting">
+                                    <span class="text" data-splitting="">Contacts</span>
+                                    <span class="text" data-splitting="">Contacts</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header-right d-flex align-items-center gap_20">
+                        <div class="text-button text_primary-color">
+                            <a href="tel:+393391069936" class="link link_white link_font">+39 339 106 9936</a>
+                        </div>
+                        <div class="mobile-button d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile" aria-controls="menu-mobile">
+                            <div class="burger">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<style>
+/* Десктоп по умолчанию */
+.logo_header {
+    width: 190px;
+}
+.header.style-default {
+    border-bottom: none;
+}
+/* Мобилки (до 768px) */
+@media (max-width: 768px) {
+    .logo_header{
+        width: 145px!important;
+    }
+    .mobile-button .burger span {
+        background-color: #fff;
+    }
+}
+</style>

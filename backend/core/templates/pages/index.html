@@ -1,23 +1,14 @@
 
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}prestigecars - Real Estate{% endblock %}
 
 {% block meta_description %}prestigecars is a website specializing in buying and renting properties{% endblock %}
 
 {% block content %}
-
-        <!-- .header -->
-        {% include 'includes/header1.html' %}
-        <!-- End header -->
-
-        <!-- page-title -->
-        {% include 'mainpage/hero.html' %}
-        <!-- End page-title -->
-
         <!-- main-content -->
-        <div class="main-content">
+            {% include 'mainpage/hero.html' %}
             {% include 'mainpage/about.html' %}
             {% include 'mainpage/fleet.html' %}
             {% include 'mainpage/destinations.html' %}
@@ -27,8 +18,6 @@
             {% include 'mainpage/reviews.html' %}
             {% include 'mainpage/banner_scroll.html' %}
             {% include 'mainpage/prices.html' %}
-
-        </div>
         <!-- End main-content -->
 
     </div>
@@ -44,7 +33,4 @@
         </svg>
     </div>
     <!-- End prograss -->
-    <!-- mobile-nav -->
-    {% include 'includes/mobile_menu.html' %}
-    <!-- /mobile-nav -->
 {% endblock %}

@@ -17,4 +17,4 @@ Disallow: /filer/
 # Статика и медиа (опционально)
 Disallow: /media/uploads/
 
-Sitemap: https://parisweek.ru/sitemap.xml
+Sitemap: https://prestigecars24.com/sitemap.xml

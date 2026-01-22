@@ -1,83 +1,71 @@
-<header class="header style-2">
-    <div class="tf-container w-1830">
-        <!-- Top bar -->
-        <div class="header-top d-flex justify-content-between align-items-center py-3">
-            <a href="/" class="site-logo">
-                <img class="logo_header" alt="Prestige Cars 24" height="158" src="https://prestigecars24.com/wp-content/uploads/2025/10/logo.svg">
-            </a>
-            <div class="header-contacts d-flex align-items-center gap-4">
-                <span class="lang-switch text_white" style="font-family: Inconsolata, sans-serif; letter-spacing: 2px; font-size: 12px;">EN</span>
-                <div class="contact-item d-flex align-items-center gap-2">
-                    <i class="icon-phone text_secondary-color-2"></i>
-                    <div class="contact-text">
-                        <a href="tel:+393391069936" class="text_white d-block" style="font-family: Inconsolata, sans-serif; letter-spacing: 1px; font-size: 13px;">+393391069936</a>
-                        <a href="mailto:booking@prestigecars24.com" class="text_white d-block" style="font-family: Inconsolata, sans-serif; letter-spacing: 1px; font-size: 13px;">BOOKING@PRESTIGECARS24.COM</a>
+{% load static %}
+<header class="header style-default">
+    <div class="tf-container w-xxl">
+        <div class="row">
+            <div class="col-12">
+                <div class="header-inner">
+                    <a href="{% url 'index' %}" class="site-logo">
+                        <img class="logo_header" alt="Prestige Cars 24" src="{% static 'images/logo-color.svg' %}">
+                    </a>
+                    <nav class="main-menu">
+                        <ul class="navigation">
+                            <li class="text-menu"><a href="{% url 'index' %}#about" class="toggle splitting">
+                                    <span class="text" data-splitting="">About Us</span>
+                                    <span class="text" data-splitting="">About Us</span>
+                                </a>
+                            </li>
+                            <li class="text-menu"><a href="{% url 'index' %}#carrental" class="link-no-action toggle splitting">
+                                    <span class="text" data-splitting="">Car Rental</span>
+                                    <span class="text" data-splitting="">Car Rental</span>
+                                </a>
+                            </li>
+                            <li class="text-menu"><a href="https://wa.me/+393391069936" class="link-no-action toggle splitting">
+                                    <span class="text" data-splitting="">Luxury Services</span>
+                                    <span class="text" data-splitting="">Luxury Services</span>
+                                </a>
+                            </li>
+                            <li class="text-menu"><a href="{% url 'index' %}#locations" class="link-no-action toggle splitting">
+                                    <span class="text" data-splitting="">Locations</span>
+                                    <span class="text" data-splitting="">Locations</span>
+                                </a>
+                            </li>
+                            <li class="text-menu"><a href="/contacts/" class="toggle splitting">
+                                    <span class="text" data-splitting="">Contacts</span>
+                                    <span class="text" data-splitting="">Contacts</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header-right d-flex align-items-center gap_20">
+                        <div class="text-button text_primary-color">
+                            <a href="tel:+393391069936" class="link link_font">+39 339 106 9936</a>
+                        </div>
+                        <div class="mobile-button d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile" aria-controls="menu-mobile">
+                            <div class="burger">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="contact-item d-flex align-items-center gap-2">
-                    <i class="icon-location text_secondary-color-2"></i>
-                    <div class="contact-text">
-                        <span class="text_white d-block" style="font-family: Inconsolata, sans-serif; letter-spacing: 1px; font-size: 13px;">VIA GIACOMO LEOPARDI, 26</span>
-                        <span class="text_white d-block" style="font-family: Inconsolata, sans-serif; letter-spacing: 1px; font-size: 13px;">20123 MILANO MI</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Main nav -->
-        <div class="header-nav">
-            <nav class="main-menu">
-                <ul class="navigation d-flex gap-4">
-                    <li class="text-menu"><a href="/about" class="nav-link-custom">
-                        <span class="dot">•</span> ABOUT US
-                    </a></li>
-                    <li class="text-menu"><a href="/cars" class="nav-link-custom">
-                        <span class="dot">•</span> CAR RENTAL
-                    </a></li>
-                    <li class="text-menu"><a href="/services" class="nav-link-custom">
-                        <span class="dot">•</span> LUXURY SERVICES
-                    </a></li>
-                    <li class="text-menu"><a href="/locations" class="nav-link-custom">
-                        <span class="dot">•</span> LOCATIONS
-                    </a></li>
-                </ul>
-            </nav>
-            <div class="mobile-button d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile" aria-controls="menu-mobile">
-                <div class="burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 <style>
-.header-top {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+/* Десктоп по умолчанию */
+.logo_header {
+    width: 190px;
 }
-.header-contacts .contact-item {
-    padding-left: 20px;
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
-}
-.nav-link-custom {
-    font-family: Inconsolata, sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: #fff;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.nav-link-custom .dot {
-    color: #bfa37c;
-    margin-right: 8px;
-}
-@media (max-width: 991px) {
-    .header-contacts {
-        display: none !important;
+
+/* Мобилки (до 768px) */
+@media (max-width: 768px) {
+    .logo_header{
+        width: 145px!important;
     }
-    .header-nav .navigation {
-        display: none !important;
+    .header-top {
+        padding: 0;
     }
 }
 </style>

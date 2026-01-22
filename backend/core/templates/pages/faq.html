@@ -1,0 +1,311 @@
+{% extends 'base3.html' %}
+{% load static i18n %}
+
+{% block title %}FAQ - Prestige Cars 24 | Luxury Car Rental Milan{% endblock %}
+{% block meta_description %}Frequently asked questions about luxury car rental in Milan. Learn about booking, chauffeur services, airport transfers, and rental requirements at Prestige Cars 24.{% endblock %}
+
+{% block content %}
+<!-- Page Title -->
+<div class="page-title style-default">
+    <div class="thumbs">
+        <img src="{% static 'images/h1-img-13.jpg' %}"> alt="FAQ Prestige Cars 24">
+    </div>
+    <div class="content text-center">
+        <div class="tf-container">
+            <h1 class="title text_white mb_12">Frequently Asked Questions</h1>
+            <ul class="breadcrumb justify-content-center text-button fw-4">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li>FAQ</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End page-title -->
+
+<!-- main-content -->
+<div class="main-content" style="background-color: #0c1315;">
+
+    <div class="section-faqs tf-spacing-1">
+        <div class="tf-container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- FAQ Accordion -->
+                    <div class="faq-item">
+                        <div class="heading-section mb_30">
+                            <span class="sub qodef-m-subtitle text-uppercase text_secondary-color-2" style="letter-spacing: 2px;">List of Answers</span>
+                            <h3 class="text_white" style="font-family: Epilogue, sans-serif; font-weight: 400;">Common Questions</h3>
+                        </div>
+                        
+                        <ul class="accordion-wrap" id="accordion-faq">
+                            <!-- FAQ 1 -->
+                            <li class="accordion-item">
+                                <a href="#accordion-faq-1" class="accordion-title" data-bs-toggle="collapse" aria-expanded="true" aria-controls="accordion-faq-1">
+                                    <div class="heading">
+                                        <div class="title text-title text_white fw-6">What types of cars are available for rent?</div>
+                                        <span class="icon icon-CaretDown text_secondary-color-2"></span>
+                                    </div>
+                                </a>
+                                <div id="accordion-faq-1" class="collapse show" data-bs-parent="#accordion-faq">
+                                    <div class="accordion-faqs-content">
+                                        <p class="text_color-1">We specialize in premium vehicles: luxury sedans, sports cars, supercars, SUVs, and exclusive models for weddings, events, and VIP transfers. Our fleet includes brands like Ferrari, Lamborghini, Mercedes-AMG, BMW, Porsche, and Audi.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- FAQ 2 -->
+                            <li class="accordion-item">
+                                <a href="#accordion-faq-2" class="accordion-title collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="accordion-faq-2">
+                                    <div class="heading">
+                                        <div class="title text-title text_white fw-6">How can I book a car?</div>
+                                        <span class="icon icon-CaretDown text_secondary-color-2"></span>
+                                    </div>
+                                </a>
+                                <div id="accordion-faq-2" class="collapse" data-bs-parent="#accordion-faq">
+                                    <div class="accordion-faqs-content">
+                                        <p class="text_color-1">You can book directly through our website, via WhatsApp chat, by phone at <a href="tel:+393391069936" class="text_secondary-color-2">+39 339 106 9936</a>, or by email at <a href="mailto:booking@prestigecars24.com" class="text_secondary-color-2">booking@prestigecars24.com</a>. Our team will confirm your reservation quickly and securely.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- FAQ 3 -->
+                            <li class="accordion-item">
+                                <a href="#accordion-faq-3" class="accordion-title collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="accordion-faq-3">
+                                    <div class="heading">
+                                        <div class="title text-title text_white fw-6">Do you offer chauffeur services?</div>
+                                        <span class="icon icon-CaretDown text_secondary-color-2"></span>
+                                    </div>
+                                </a>
+                                <div id="accordion-faq-3" class="collapse" data-bs-parent="#accordion-faq">
+                                    <div class="accordion-faqs-content">
+                                        <p class="text_color-1">Yes. We provide professional chauffeurs for airport transfers, corporate trips, weddings, and special occasions. All our drivers are experienced, multilingual, and committed to delivering a first-class experience.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- FAQ 4 -->
+                            <li class="accordion-item">
+                                <a href="#accordion-faq-4" class="accordion-title collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="accordion-faq-4">
+                                    <div class="heading">
+                                        <div class="title text-title text_white fw-6">Can I rent a car without a driver?</div>
+                                        <span class="icon icon-CaretDown text_secondary-color-2"></span>
+                                    </div>
+                                </a>
+                                <div id="accordion-faq-4" class="collapse" data-bs-parent="#accordion-faq">
+                                    <div class="accordion-faqs-content">
+                                        <p class="text_color-1">Of course. Most of our cars are available for self-drive rental. A valid driver's license (held for at least 3 years) and a security deposit are required. Age requirements may vary depending on the vehicle category.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- FAQ 5 -->
+                            <li class="accordion-item">
+                                <a href="#accordion-faq-5" class="accordion-title collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="accordion-faq-5">
+                                    <div class="heading">
+                                        <div class="title text-title text_white fw-6">Are airport transfers available?</div>
+                                        <span class="icon icon-CaretDown text_secondary-color-2"></span>
+                                    </div>
+                                </a>
+                                <div id="accordion-faq-5" class="collapse" data-bs-parent="#accordion-faq">
+                                    <div class="accordion-faqs-content">
+                                        <p class="text_color-1">Yes. We offer premium airport transfer services to and from all major airports in Milan (Malpensa, Linate, Orio al Serio) and across Italy, as well as international destinations including Monte Carlo, Zurich, and the French Riviera.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- FAQ 6 -->
+                            <li class="accordion-item">
+                                <a href="#accordion-faq-6" class="accordion-title collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="accordion-faq-6">
+                                    <div class="heading">
+                                        <div class="title text-title text_white fw-6">Is it possible to rent a car for just a few hours?</div>
+                                        <span class="icon icon-CaretDown text_secondary-color-2"></span>
+                                    </div>
+                                </a>
+                                <div id="accordion-faq-6" class="collapse" data-bs-parent="#accordion-faq">
+                                    <div class="accordion-faqs-content">
+                                        <p class="text_color-1">Yes. We offer flexible rental periods — from hourly bookings to daily, weekly, or monthly rentals. Whether you need a supercar for a photoshoot or a luxury sedan for a week-long business trip, we can accommodate your needs.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- FAQ 7 -->
+                            <li class="accordion-item">
+                                <a href="#accordion-faq-7" class="accordion-title collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="accordion-faq-7">
+                                    <div class="heading">
+                                        <div class="title text-title text_white fw-6">What documents are required to rent a car?</div>
+                                        <span class="icon icon-CaretDown text_secondary-color-2"></span>
+                                    </div>
+                                </a>
+                                <div id="accordion-faq-7" class="collapse" data-bs-parent="#accordion-faq">
+                                    <div class="accordion-faqs-content">
+                                        <p class="text_color-1">You will need a valid driver's license (international license if from outside the EU), passport or ID, and a credit card for the security deposit. For corporate clients, invoicing options are available upon request.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- FAQ 8 -->
+                            <li class="accordion-item">
+                                <a href="#accordion-faq-8" class="accordion-title collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="accordion-faq-8">
+                                    <div class="heading">
+                                        <div class="title text-title text_white fw-6">How do I contact customer support quickly?</div>
+                                        <span class="icon icon-CaretDown text_secondary-color-2"></span>
+                                    </div>
+                                </a>
+                                <div id="accordion-faq-8" class="collapse" data-bs-parent="#accordion-faq">
+                                    <div class="accordion-faqs-content">
+                                        <p class="text_color-1">The fastest way is via <a href="https://wa.me/393391069936" target="_blank" class="text_secondary-color-2">WhatsApp chat</a> for instant replies. You can also call our office at <a href="tel:+393391069936" class="text_secondary-color-2">+39 339 106 9936</a> during working hours (09:00-23:00) or email us at <a href="mailto:booking@prestigecars24.com" class="text_secondary-color-2">booking@prestigecars24.com</a> for assistance.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="sidebar-faq sticky-top">
+                        <!-- Contact Card -->
+                        <div class="contact-card p-4 mb_30" style="background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h5 class="text_white mb_16">Still Have Questions?</h5>
+                            <p class="text_color-1 mb_20">Contact our team for personalized assistance with your luxury car rental.</p>
+                            
+                            <div class="contact-info mb_20">
+                                <div class="d-flex align-items-center gap_12 mb_12">
+                                    <i class="icon-PhoneCall text_secondary-color-2" style="font-size: 20px;"></i>
+                                    <a href="tel:+393391069936" class="text_color-1 link link_white-2">+39 339 106 9936</a>
+                                </div>
+                                <div class="d-flex align-items-center gap_12 mb_12">
+                                    <i class="icon-EnvelopeSimple text_secondary-color-2" style="font-size: 20px;"></i>
+                                    <a href="mailto:booking@prestigecars24.com" class="text_color-1 link link_white-2">booking@prestigecars24.com</a>
+                                </div>
+                                <div class="d-flex align-items-center gap_12">
+                                    <i class="icon-ChatCircleDots text_secondary-color-2" style="font-size: 20px;"></i>
+                                    <a href="https://wa.me/393391069936" target="_blank" class="text_color-1 link link_white-2">WhatsApp Chat</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Working Hours -->
+                        <div class="hours-card p-4" style="background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h5 class="text_white mb_16">Working Hours</h5>
+                            <ul class="text_color-1" style="list-style: none; padding: 0; margin: 0;">
+                                <li class="d-flex justify-content-between mb_8">
+                                    <span>Monday - Sunday</span>
+                                    <span class="text_white">09:00 - 23:00</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <span>WhatsApp Support</span>
+                                    <span class="text_secondary-color-2">24/7</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- End main-content -->
+
+<style>
+.page-title.style-default {
+    position: relative;
+}
+.page-title.style-default .thumbs {
+  min-height: 100px;
+  max-height: 200px;
+}
+.page-title.style-default .thumbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    min-height: 100px;
+}
+@media (min-width: 768px) {
+  .page-title.style-default .thumbs {
+    min-height: 100px;
+    max-height: 200px;
+  }
+}
+.page-title.style-default .thumbs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.page-title.style-default .thumbs::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.page-title.style-default .content {
+    position: relative;
+    z-index: 1;
+    padding: 100px 0;
+}
+
+/* FAQ Accordion Styles */
+.accordion-wrap {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.accordion-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.accordion-title {
+    display: block;
+    padding: 20px 0;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.accordion-title .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.accordion-title .title {
+    flex: 1;
+    padding-right: 20px;
+}
+.accordion-title .icon {
+    transition: transform 0.3s;
+}
+.accordion-title:not(.collapsed) .icon {
+    transform: rotate(180deg);
+}
+.accordion-title:hover .title {
+    color: #bfa37c;
+}
+.accordion-faqs-content {
+    padding: 0 0 20px 0;
+}
+.accordion-faqs-content p {
+    margin: 0;
+    line-height: 1.7;
+}
+.accordion-faqs-content a:hover {
+    text-decoration: underline;
+}
+
+/* Sidebar */
+.sidebar-faq {
+    top: 100px;
+}
+.sidebar-faq .qodef-button {
+    justify-content: center;
+    width: 100%;
+}
+
+@media (max-width: 991px) {
+    .sidebar-faq {
+        margin-top: 40px;
+    }
+}
+</style>
+{% endblock %}

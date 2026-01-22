@@ -13,13 +13,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "1insecure1-1default1")
 
 # DEBUG
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
 else:
-    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost 127.0.0.1 217.154.149.73 parisweek.ru www.parisweek.ru").split()
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost 127.0.0.1 57.131.39.213 prestigecars24.com www.prestigecars24.com").split()
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost",
@@ -27,8 +27,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:10000",
     "http://localhost:8000",
     "http://127.0.0.1:8000",
-    "https://parisweek.ru",
-    "https://www.parisweek.ru",
+    "https://prestigecars24.com",
+    "https://www.prestigecars24.com",
 ]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -197,7 +197,7 @@ else:
 # ===========================================
 SENDPULSE_API_USER_ID = os.getenv("SENDPULSE_API_USER_ID", "")
 SENDPULSE_API_SECRET = os.getenv("SENDPULSE_API_SECRET", "")
-SENDPULSE_FROM_EMAIL = os.getenv("SENDPULSE_FROM_EMAIL", "noreply@parisweek.ru")
+SENDPULSE_FROM_EMAIL = os.getenv("SENDPULSE_FROM_EMAIL", "noreply@prestigecars24.com")
 SENDPULSE_FROM_NAME = os.getenv("SENDPULSE_FROM_NAME", "prestigecars")
 
 # Password validation
@@ -277,7 +277,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 
-DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "prestigecars <service@parisweek.ru>")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "prestigecars <service@prestigecars24.com>")
 
 # ===========================================
 # THUMBNAILS (Filer)

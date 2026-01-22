@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 {% include 'includes/footer_banner.html' %}
 {% include 'includes/footer_contacts.html' %}
 <!-- Footer -->
@@ -8,8 +8,8 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
     <div class="footer-about footer-item">
-        <a href="/" class="footer-logo mb_24">
-            <img src="https://prestigecars24.com/wp-content/uploads/2025/10/logo-color.svg" alt="Prestige Cars 24" class="main-logo" width="220">
+        <a href="{% url 'index' %}" class="footer-logo mb_24">
+            <img src="{% static 'images/logo-color.svg' %}" alt="Prestige Cars 24" class="main-logo" width="220">
         </a>
         <div class="mb_16">
             <p class="text_white text_color-2">For over 10 years we've been offering more than just a rental: a tailored luxury experience. Every journey is perfect, personalized, and uncompromising.</p>
@@ -25,11 +25,11 @@
         <div class="footer-col-block company">
             <div class="footer-heading text-title text_white mb_16">Quick Links</div>
             <ul class="footer-menu-list d-grid">
-                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Car rental</a></li>
-                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Luxury services</a></li>
-                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">FAQ</a></li>
-                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Contact Us</a></li>
-                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Privacy Policy</a></li>
+                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Car rental</a></li>
+                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Luxury services</a></li>
+                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">FAQ</a></li>
+                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Contact Us</a></li>
+                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Privacy Policy</a></li>
             </ul>
         </div>
     </div>
@@ -39,11 +39,11 @@
         <div class="footer-col-block quick-link">
             <div class="footer-heading text-title text_white mb_16">Cars by Brand</div>
             <ul class="footer-menu-list d-grid">
-                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Mercedes</a></li>
-                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Lamborghini</a></li>
-                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Ferrari</a></li>
-                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">BMW</a></li>
-                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Audi</a></li>
+                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Mercedes</a></li>
+                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Lamborghini</a></li>
+                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Ferrari</a></li>
+                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">BMW</a></li>
+                <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Audi</a></li>
             </ul>
         </div>
     </div>
@@ -52,10 +52,10 @@
     <div class="footer-newsletter footer-item">
         <div class="footer-heading text-title text_white mb_16">Our Services</div>
         <ul class="footer-menu-list d-grid mb_20">
-            <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Airport Transfer</a></li>
-            <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Corporate Travels</a></li>
-            <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Special Events</a></li>
-            <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link">Wedding Limousine</a></li>
+            <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Airport Transfer</a></li>
+            <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Corporate Travels</a></li>
+            <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Special Events</a></li>
+            <li class="text-body-default-f-header text_color-1 mb_10"><a href="#" class="link link_white">Wedding Limousine</a></li>
         </ul>
     </div>
 </div>

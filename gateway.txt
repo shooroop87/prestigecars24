@@ -1,5 +1,5 @@
 server {
-    server_name 217.154.149.73 parisweek.ru www.parisweek.ru;
+    server_name 57.131.39.213 prestigecars24.com www.prestigecars24.com;
     server_tokens off;
 
     location / {

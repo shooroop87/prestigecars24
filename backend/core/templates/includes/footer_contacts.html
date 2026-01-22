@@ -1,11 +1,11 @@
-{% load static %}
+{% load static i18n %}
 <!-- section-contact-info -->
 <div class="section-contact-info">
     <div class="tf-container w-lg">
         <div class="tf-grid-layout md-col-3 gap_30">
             <div class="item d-flex align-items-center gap_20">
                 <div class="icon" style="width: 26px;">
-                    <img src="https://prestigecars24.com/wp-content/uploads/2023/02/content-bottom-icon-001.png" alt="location" width="52" height="84">
+                    <img src="{% static 'images/content-bottom-icon-001.png' %}" alt="location" width="52" height="84">
                 </div>
                 <div>
                     <p class="text_color-1 text_color-contact">Via Giacomo Leopardi, 26</p>
@@ -14,7 +14,7 @@
             </div>
             <div class="item d-flex align-items-center gap_20">
                 <div class="icon" style="width: 45px;">
-                    <img src="https://prestigecars24.com/wp-content/uploads/2023/02/h1-icon-img-1.2.png" alt="contact" width="90" height="100">
+                    <img src="{% static 'images/h1-icon-img-1.2.png' %}" alt="contact" width="90" height="100">
                 </div>
                 <div>
                     <p class="text_color-1 text_color-contact"><a href="tel:+393391069936" class="link">Tel: +39 339 106 9936</a></p>
@@ -23,7 +23,7 @@
             </div>
             <div class="item d-flex align-items-center gap_20">
                 <div class="icon" style="width: 45px;">
-                    <img src="https://prestigecars24.com/wp-content/uploads/2023/02/content-bottom-icon-003.png" alt="hours" width="90" height="90">
+                    <img src="{% static 'images/content-bottom-icon-003.png' %}" alt="hours" width="90" height="90">
                 </div>
                 <div>
                     <p class="text_color-1 text_color-contact">Mon-Sun 09:00-23:00</p>
@@ -41,12 +41,12 @@
 .section-contact-info .item a:hover {
     color: #ffffff;
 }
-body > div.section-contact-info {
+div.section-contact-info {
     padding: 75px 60px 80px;
     background-color: #0c1315;
 }
 @media (max-width: 768px) {
-    body > div.section-contact-info {
+    div.section-contact-info {
         padding: 50px 5px;
     }
 }

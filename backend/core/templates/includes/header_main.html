@@ -1,0 +1,115 @@
+{% load static i18n %}
+<header class="header style-2" id="qodef-page-header">
+    <div class="tf-container w-xxl">
+        <!-- Top bar -->
+        <div class="header-top d-flex justify-content-between align-items-center">
+            <a href="{% url 'index' %}" class="site-logo">
+                <img class="logo_header" alt="Prestige Cars 24" src="{% static 'images/logo.svg' %}">
+            </a>
+            <div class="header-contacts d-flex align-items-center">
+                <span class="header-separator"></span>
+                <div class="contact-item d-flex align-items-center">
+                    <i class="icon-PhoneCall "></i>
+                    <div class="contact-text">
+                        <a href="tel:+393391069936" class="text_white d-block">+393391069936</a>
+                        <a href="mailto:booking@prestigecars24.com" class="text_white d-block">BOOKING@PRESTIGECARS24.COM</a>
+                    </div>
+                </div>
+                <span class="header-separator"></span>
+                <div class="contact-item d-flex align-items-center">
+                    <i class="icon-MapPin "></i>
+                    <div class="contact-text">
+                        <span class="text_white d-block">VIA GIACOMO LEOPARDI, 26</span>
+                        <span class="text_white d-block">20123 MILANO MI</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Main nav -->
+            <div class="header-nav" id="qodef-page-mobile-header">
+                <nav class="main-menu">
+                    <ul class="navigation d-flex">
+                        <li class="text-menu"><a href="/about/" class="nav-link-custom"><span class="dot">•</span> ABOUT US</a></li>
+                        <li class="text-menu"><a href="/cars/" class="nav-link-custom"><span class="dot">•</span> CAR RENTAL</a></li>
+                        <li class="text-menu"><a href="/services/" class="nav-link-custom"><span class="dot">•</span> LUXURY SERVICES</a></li>
+                        <li class="text-menu"><a href="/locations/" class="nav-link-custom"><span class="dot">•</span> LOCATIONS</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-button d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile" aria-controls="menu-mobile">
+                    <div class="burger"><span></span><span></span><span></span></div>
+                </div>
+            </div>
+        </div>
+        <!-- Main nav -->
+            <div class="header-nav" id="qodef-page-header-on-mobile">
+                <nav class="main-menu">
+                    <ul class="navigation d-flex">
+                        <li class="text-menu"><a href="/about/" class="nav-link-custom"><span class="dot">•</span> ABOUT US</a></li>
+                        <li class="text-menu"><a href="/cars/" class="nav-link-custom"><span class="dot">•</span> CAR RENTAL</a></li>
+                        <li class="text-menu"><a href="/services/" class="nav-link-custom"><span class="dot">•</span> LUXURY SERVICES</a></li>
+                        <li class="text-menu"><a href="/locations/" class="nav-link-custom"><span class="dot">•</span> LOCATIONS</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-button d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile" aria-controls="menu-mobile">
+                    <div class="burger"><span></span><span></span><span></span></div>
+                </div>
+            </div>
+    </div>
+</header>
+<style>
+.header.style-2 { background: transparent; position: absolute; width: 100%; z-index: 100; }
+.header-top { padding: 5px 0; border-bottom: 1px solid rgba(255, 255, 255, .5490196078); }
+.header-contacts { display: flex; align-items: center; gap: 30px; }
+.lang-switch { margin-right: 20px; }
+.lang-link { font-family: Inconsolata, sans-serif; font-size: 12px; letter-spacing: 2px; color: rgba(255,255,255,0.7); text-decoration: none; line-height: 1.6; }
+.lang-link.active, .lang-link:hover { color: #fff; }
+.contact-text a, .contact-text span, .contact-item { 
+font-family: Inconsolata, sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+color: #fff;
+text-transform: uppercase;
+vertical-align: middle;
+flex-wrap: wrap;
+letter-spacing: .25em;
+}
+.header-separator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    transform: translateY(30%);
+    height: 50px;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+}
+#qodef-page-header .header-top div > div:nth-child(1) > i,
+#qodef-page-header .header-top div > div:nth-child(2) > i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.header-nav .navigation { gap: 40px; list-style: none; margin: 0; padding: 0; }
+.nav-link-custom { font-family: Inconsolata, sans-serif; font-size: 12px; letter-spacing: 2px; color: #fff; text-transform: uppercase; text-decoration: none; }
+.nav-link-custom .dot { color: #fff; font-size: 20px;}
+.nav-link-custom:hover { color: #bfa37c; }
+@media (max-width: 991px) {
+    .header-contacts { display: none !important; }
+    .header-nav .navigation { display: none !important; }
+}
+#qodef-page-mobile-header {
+    position: relative;
+    display: none;
+    height: 70px;
+    z-index: 102;
+}
+#qodef-page-header-on-mobile {
+    display: auto;
+}
+@media only screen and (max-width: 1024px) {
+    #qodef-page-mobile-header {
+        display: contents;
+    }
+    #qodef-page-header-on-mobile {
+        display: none;
+    }
+}
+</style>

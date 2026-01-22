@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!-- .header -->
 <header class="header style-default header-sticky">
     <div class="tf-container w-xxl">
@@ -6,32 +6,28 @@
             <div class="col-12">
                 <div class="header-inner">
                     <a href="/" class="site-logo">
-                        <img class="logo_header" alt="prestigecars24" width="292" height="48" src="/wp-content/uploads/2025/logo.svg">
+                        <img class="logo_header" alt="prestigecars24" src="{% static 'images/logo-color.svg' %}">
                     </a>
                     <nav class="main-menu">
                         <ul class="navigation">
                             <li class="text-menu current-menu">
-                                <a href="#" class="splitting"><span class="text" data-splitting>About Us</span></a>
+                                <a href="{% url 'index' %}#about" class="splitting"><span class="text" data-splitting>About Us</span></a>
                             </li>
                             <li class="text-menu">
-                                <a href="#" class="splitting"><span class="text" data-splitting>Car rental</span></a>
+                                <a href="{% url 'index' %}#carrental" class="splitting"><span class="text" data-splitting>Car rental</span></a>
                             </li>
                             <li class="text-menu">
-                                <a href="#" class="splitting"><span class="text" data-splitting>Luxury services</span></a>
+                                <a href="https://wa.me/+393391069936" class="splitting"><span class="text" data-splitting>Luxury services</span></a>
                             </li>
                             <li class="text-menu">
-                                <a href="#" class="splitting"><span class="text" data-splitting>Locations</span></a>
+                                <a href="{% url 'index' %}#locations" class="splitting"><span class="text" data-splitting>Locations</span></a>
                             </li>
                         </ul>
                     </nav>
                     <div class="header-right d-flex align-items-center gap_20">
                         <div class="text-button text_primary-color">
-                            <a href="tel:+393391069936" class="link">+39 339 106 9936</a>
+                            <a href="tel:+393391069936" class="link link_font">+39 339 106 9936</a>
                         </div>
-                        <a href="mailto:booking@prestigecars24.com" class="tf-btn btn-bg-primary btn-px-32">
-                            <span>Book Now</span>
-                            <span class="bg-effect"></span>
-                        </a>
                         <div class="mobile-button d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile" aria-controls="menu-mobile">
                             <div class="burger"><span></span><span></span><span></span></div>
                         </div>
@@ -57,5 +53,14 @@
 
 .menu-lang {
     z-index: 999999 !important;
+}
+.logo_header {
+    width: 184px;
+}
+/* Мобилки (до 768px) */
+@media (max-width: 768px) {
+    .logo_header{
+        width: 140px!important;
+    }
 }
 </style>

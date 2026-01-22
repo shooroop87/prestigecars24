@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!-- Mobile Menu -->
 <div class="offcanvas offcanvas-end mobile-nav-wrap" tabindex="-1" id="menu-mobile" aria-labelledby="menu-mobile" aria-modal="true" role="dialog">
     <div class="fixed-nav-rounded-div">
@@ -9,7 +9,7 @@
     <div class="offcanvas-header top-nav-mobile">
         <div class="offcanvas-title">
             <a href="{% url 'index' %}" class="site-logo">
-                <img src="https://prestigecars.com/wp-content/uploads/2025/03/logo-1.svg" alt="prestigecars" class="main-logo" width="193" height="44">
+                <img src="{% static 'images/logo.svg' %}" alt="Prestige Cars 24" class="main-logo" width="193" height="44">
             </a>
         </div>
         <div data-bs-dismiss="offcanvas" class="btn-close-menu">
@@ -19,45 +19,110 @@
     <div class="offcanvas-body inner-mobile-nav">
         <div class="mb-body">
             <ul id="menu-mobile-menu" class="style-1">
-                <li class="menu-item active">
-                    <a href="#developers" class="item-menu-mobile">Рейтинги девелоперов</a>
+                <li class="menu-item">
+                    <a href="/about/" class="item-menu-mobile">About Us</a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="item-menu-mobile">Агентства</a>
+                    <a href="/cars/" class="item-menu-mobile">Car Rental</a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="item-menu-mobile">Премия Девелопер 2025</a>
+                    <a href="/services/" class="item-menu-mobile">Luxury Services</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/locations/" class="item-menu-mobile">Locations</a>
+                </li>
+                <li class="menu-item">
+                    <a href="{% url 'contacts' %}" class="item-menu-mobile">Contact Us</a>
                 </li>
             </ul>
             <div class="support">
-                <a href="https://t.me/prestigecars" class="tf-btn w-full" target="_blank" style="--button-width: 100%;">
-                    <span class="d-flex align-items-center gap_8"><i class="icon-ChatCircleDots"></i>Написать в Telegram</span>
+                <a href="https://wa.me/393391069936" class="tf-btn w-full" target="_blank" style="--button-width: 100%;">
+                    <span class="d-flex align-items-center gap_8"><i class="icon-ChatCircleDots"></i>Chat on WhatsApp</span>
                     <span class="bg-effect"></span>
                 </a>
                 <ul class="mb-info mt_20">
-                    <li>Наш адрес: <span class="number">Бали, Индонезия</span></li>
-                    <li>Поддержка 24/7: <span class="number">WhatsApp</span></li>
-                    <li>Email: <a href="mailto:info@prestigecars.com" class="link">info@prestigecars.com</a></li>
-                    <li>
-                        <div class="wrap-social">
-                            <p>Мы в соцсетях:</p>
-                            <ul class="social align-items-center d-flex gap_24">
-                                <li><a href="#" class="icon-FacebookLogo"></a></li>
-                                <li><a href="https://www.youtube.com/@prestigecars" class="icon-YoutubeLogo" target="_blank"></a></li>
-                                <li><a href="#" class="icon-XLogo"></a></li>
-                                <li><a href="https://www.instagram.com/prestigecars.ru/" class="icon-InstagramLogo" target="_blank"></a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    <li>Our Address: <span class="number">Via Giacomo Leopardi 26, Milano</span></li>
+                    <li>Call Us: <a href="tel:+393391069936" class="number">+39 339 106 9936</a></li>
+                    <li>Email: <a href="mailto:booking@prestigecars24.com" class="number">booking@prestigecars24.com</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 <style>
-#menu-mobile-menu li.active > a,
-#menu-mobile-menu li.active > a:hover,
-#menu-mobile-menu li.active > a:focus {
-    color: inherit;
+/* Mobile Menu Styles for Prestige Cars 24 */
+.mobile-nav-wrap {
+    background-color: #0c1315 !important;
+}
+.mobile-nav-wrap .offcanvas-header {
+    border-bottom: 1px solid rgba(191, 163, 124, 0.2);
+}
+.mobile-nav-wrap .btn-close-menu {
+    color: #fff;
+}
+.mobile-nav-wrap .btn-close-menu:hover {
+    color: #bfa37c;
+}
+
+#menu-mobile-menu .item-menu-mobile {
+    color: #fff;
+    font-family: Inconsolata, sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px 0;
+    display: block;
+    transition: color 0.3s;
+}
+#menu-mobile-menu .item-menu-mobile:hover,
+#menu-mobile-menu li.active > a {
+    color: #bfa37c;
+}
+
+.mobile-nav-wrap .support .tf-btn {
+    background-color: #e4e95b;
+    border: 1px solid #e4e95b;
+    color: #000;
+    font-family: Inconsolata, sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 25px 20px;
+    transition: all 0.3s;
+}
+.mobile-nav-wrap .support .tf-btn:hover {
+    background-color: #bfa37c;
+    color: #0c1315;
+}
+
+.mobile-nav-wrap .mb-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.mobile-nav-wrap .mb-info li {
+    color: #a6a6a6;
+    font-size: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.mobile-nav-wrap .mb-info .number,
+.mobile-nav-wrap .mb-info .link {
+    color: #fff;
+}
+.mobile-nav-wrap .mb-info .link:hover {
+    color: #bfa37c;
+}
+
+.mobile-nav-wrap .wrap-social p {
+    color: #a6a6a6;
+    margin-bottom: 12px;
+}
+.mobile-nav-wrap .wrap-social .social a {
+    color: #fff;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+.mobile-nav-wrap .wrap-social .social a:hover {
+    color: #bfa37c;
 }
 </style>
