@@ -15,5 +15,4 @@ urlpatterns = [
     
     # Машины
     path("<slug:category_slug>/<slug:car_slug>/", views.car_detail, name="car_detail"),
-    path("<slug:category_slug>/", views.car_list_by_category, name="car_list_by_category"),
 ]
