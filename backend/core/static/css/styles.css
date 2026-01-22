@@ -878,6 +878,9 @@ h6,
 .link_white-2 {
   color: #fff !important;
 }
+.link_black {
+  color: #000 !important;
+}
 .link:hover {
   color: var(--Primary) !important;
 }

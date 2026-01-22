@@ -3158,7 +3158,7 @@
 			paramPlace : 8,
 			type  : 'iframe',
 			url   : '//www.youtube.com/embed/$4',
-			thumb : '//img.youtube.com/vi/$4/hqdefault.jpg'
+			thumb : '//img.youtube.com/vi/$4/hqdefault.webp'
 		},
 
 		vimeo : {

@@ -1,41 +1,183 @@
-<!-- SEO Meta Tags -->
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow">
+{% load static %}
+{# === SEO & SCHEMA - includes/seo.html === #}
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Prestige Cars 24">
-<meta property="og:url" content="{{ request.build_absolute_uri }}">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@prestigecars24">
-
-<!-- Geo -->
-<meta name="geo.region" content="IT-MI">
-<meta name="geo.placename" content="Milan">
-<meta name="geo.position" content="45.4642;9.1900">
-<meta name="ICBM" content="45.4642, 9.1900">
-
-<!-- Schema.org JSON-LD -->
+{# === ORGANIZATION + LOCAL BUSINESS === #}
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@type": "CarRental",
+    "@type": ["LocalBusiness", "CarRental"],
+    "@id": "https://prestigecars24.com/#organization",
     "name": "Prestige Cars 24",
+    "alternateName": "Prestige Cars Milan",
     "url": "https://prestigecars24.com",
-    "logo": "https://prestigecars24.com/static/images/logo.svg",
+    "logo": {
+        "@type": "ImageObject",
+        "url": "https://prestigecars24.com/static/images/logo.svg",
+        "width": 220,
+        "height": 50
+    },
+    "image": [
+        "https://prestigecars24.com/static/images/og-image.jpg",
+        "https://prestigecars24.com/static/images/h1-rev-img-3b.jpg"
+    ],
+    "description": "Premium luxury car rental in Milan, Italy. Ferrari, Lamborghini, Mercedes-AMG, BMW, Porsche, Audi. Airport transfers, chauffeur services, wedding cars.",
     "telephone": "+393391069936",
     "email": "booking@prestigecars24.com",
     "address": {
         "@type": "PostalAddress",
         "streetAddress": "Via Giacomo Leopardi, 26",
-        "addressLocality": "Milan",
+        "addressLocality": "Milano",
         "postalCode": "20123",
+        "addressRegion": "MI",
         "addressCountry": "IT"
     },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.4669,
+        "longitude": 9.1698
+    },
+    "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "23:00"
+    },
     "priceRange": "€€€€",
-    "openingHours": "Mo-Su 09:00-23:00"
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+    "areaServed": [
+        {"@type": "City", "name": "Milan"},
+        {"@type": "City", "name": "Rome"},
+        {"@type": "City", "name": "Florence"},
+        {"@type": "City", "name": "Venice"},
+        {"@type": "City", "name": "Como"},
+        {"@type": "Place", "name": "Monte Carlo"},
+        {"@type": "Place", "name": "French Riviera"},
+        {"@type": "City", "name": "Zurich"},
+        {"@type": "Place", "name": "St. Moritz"}
+    ],
+    "sameAs": [
+        "https://www.instagram.com/prestigecars24/",
+        "https://www.tiktok.com/@prestigecars24/",
+        "https://wa.me/393391069936"
+    ],
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Luxury Car Rental Fleet",
+        "itemListElement": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Car",
+                    "name": "Ferrari 296 GTB",
+                    "brand": {"@type": "Brand", "name": "Ferrari"},
+                    "vehicleConfiguration": "Sport",
+                    "fuelType": "Hybrid"
+                },
+                "price": "1500",
+                "priceCurrency": "EUR",
+                "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "1500",
+                    "priceCurrency": "EUR",
+                    "unitCode": "DAY"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Car",
+                    "name": "Lamborghini Urus",
+                    "brand": {"@type": "Brand", "name": "Lamborghini"},
+                    "vehicleConfiguration": "SUV"
+                },
+                "price": "1300",
+                "priceCurrency": "EUR",
+                "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "1300",
+                    "priceCurrency": "EUR",
+                    "unitCode": "DAY"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Car",
+                    "name": "Mercedes-AMG G 63",
+                    "brand": {"@type": "Brand", "name": "Mercedes-Benz"},
+                    "vehicleConfiguration": "Luxury SUV"
+                },
+                "price": "800",
+                "priceCurrency": "EUR",
+                "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "800",
+                    "priceCurrency": "EUR",
+                    "unitCode": "DAY"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Car",
+                    "name": "BMW X5",
+                    "brand": {"@type": "Brand", "name": "BMW"},
+                    "vehicleConfiguration": "SUV"
+                },
+                "price": "350",
+                "priceCurrency": "EUR",
+                "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "350",
+                    "priceCurrency": "EUR",
+                    "unitCode": "DAY"
+                }
+            }
+        ]
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "157",
+        "bestRating": "5",
+        "worstRating": "1"
+    }
 }
 </script>
+
+{# === WEBSITE === #}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Prestige Cars 24",
+    "url": "https://prestigecars24.com",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://prestigecars24.com/search/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+}
+</script>
+
+{# === BREADCRUMBS - переопределяется в каждой странице === #}
+{% block breadcrumb_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://prestigecars24.com/"
+        }
+    ]
+}
+</script>
+{% endblock %}
+
+{# === FAQ SCHEMA - только для страниц с FAQ === #}
+{% block faq_schema %}{% endblock %}

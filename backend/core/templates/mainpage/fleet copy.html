@@ -3,21 +3,6 @@
     <div class="tf-container" id="carrental">
         <div class="swiper tf-sw-mobile bg_1" data-screen="767" data-preview="1" data-space="15">
             <div class="swiper-wrapper tf-grid-layout-md lg-col-3 md-col-2">
-                {% for car in cars %}
-                <div class="swiper-slide">
-                    <div class="card-house style-default">
-                        <div class="img-style mb_20">
-                            <img src="{{ car.main_image }}" width="410" height="308" alt="{{ car.name }}">
-                            
-                            <a href="{{ car.get_absolute_url }}" class="overlay-link"></a>
-                        </div>
-                        <div class="content">
-                            <h4 class="price mb_12 text_white">€{{ car.price_per_day|floatformat:0 }}<span class="text_white text-body-default">/day</span></h4>
-                            <a href="{{ car.get_absolute_url }}" class="title mb_8 h5 link text_white">{{ car.name }}</a>
-                        </div>
-                    </div>
-                </div>
-                {% empty %}
                 <div class="swiper-slide">
                     <div class="card-house style-default">
                         <div class="img-style mb_20">
@@ -96,7 +81,6 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %}
                 </div>
             <div class="sw-dots style-1 sw-pagination-mb mt_24 justify-content-center d-flex d-md-none"></div>
         </div>

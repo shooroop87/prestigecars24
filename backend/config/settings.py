@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "1insecure1-1default1")
 
 # DEBUG
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS
 if DEBUG:
@@ -128,6 +128,8 @@ TEMPLATES = [
                 "django.template.context_processors.media",
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
+                "core.context_processors.code_snippets",
+                "core.context_processors.site_settings",
             ],
         },
     },
