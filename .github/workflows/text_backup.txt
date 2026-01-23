@@ -51,7 +51,7 @@ jobs:
         run: |
           cd backend/
           # Создаем и применяем миграции для блога перед тестами
-          python manage.py makemigrations blog core tours --check
+          python manage.py makemigrations core --check
           python manage.py migrate
           python manage.py test
 
@@ -143,7 +143,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         source: "docker-compose.production.yml"
-        target: "abroadstours"
+        target: "prestigecars"
     - name: Executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
@@ -155,7 +155,7 @@ jobs:
         # которые нужно выполнить на сервере, 
         # с которым установлено соединение
         script: |
-          cd abroadstours
+          cd prestigecars
           # Авторизация в Docker Hub
           echo "${{ secrets.DOCKERHUB_TOKEN_RO }}" | sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
@@ -167,7 +167,7 @@ jobs:
           
           # БЕЗОПАСНЫЙ ПЕРЕЗАПУСК: только приложение, БД и Redis остаются работать
           echo "🔄 Restarting application services..."
-          sudo docker compose -f docker-compose.production.yml up -d --no-deps backend gateway reviews-updater
+          sudo docker compose -f docker-compose.production.yml up -d --no-deps backend gateway
           
           # Ожидание запуска сервисов
           echo "⏳ Waiting for services to start..."
@@ -183,11 +183,7 @@ jobs:
           
           # ОЧИСТКА REDIS НЕ НУЖНА: Redis настроен с автоматической политикой очистки
           echo "ℹ️ Redis cleanup skipped - automatic cleanup is configured with maxmemory-policy"
-          
-          # 🔧 МИГРАЦИИ БЛОГА
-          echo "📦 Creating blog migrations..."
-          sudo docker compose -f docker-compose.production.yml exec backend python manage.py makemigrations blog || echo "⚠️ Blog migrations already exist"
-          
+
           # Применение всех миграций
           echo "🔄 Running all migrations..."
           sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate

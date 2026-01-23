@@ -70,3 +70,11 @@ pytz>=2024.1
 # ===========================================
 django-browser-reload>=1.12.0
 django-debug-toolbar>=4.2.0
+
+
+# ===========================================
+# Google Ads Bot
+# ===========================================
+python-telegram-bot>=20.0
+google-ads>=24.0.0
+apscheduler>=3.10.0

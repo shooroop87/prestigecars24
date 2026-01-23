@@ -300,16 +300,94 @@ Budget: {budget}/day
     await update.message.reply_text(help_text, parse_mode="Markdown")
 
 
+async def cmd_budget(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle /budget command - change daily budget"""
+    args = context.args
+    
+    if not args:
+        await update.message.reply_text(
+            f"💰 Current budget: {format_currency(config.DAILY_BUDGET)}/day\n\n"
+            f"Usage: /budget 50 — set €50/day"
+        )
+        return
+    
+    try:
+        new_budget = float(args[0])
+        if new_budget < 10 or new_budget > 500:
+            await update.message.reply_text("⚠️ Budget must be between €10 and €500")
+            return
+        
+        config.DAILY_BUDGET = new_budget
+        await update.message.reply_text(f"✅ Budget updated to {format_currency(new_budget)}/day")
+    except ValueError:
+        await update.message.reply_text("❌ Invalid number. Usage: /budget 50")
+
+
+async def cmd_alerts(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle /alerts command - toggle alerts on/off"""
+    global is_monitoring
+    
+    args = context.args
+    if not args:
+        status = "🟢 ON" if is_monitoring else "🔴 OFF"
+        await update.message.reply_text(
+            f"🔔 Alerts: {status}\n\n"
+            f"/alerts on — enable hourly reports\n"
+            f"/alerts off — disable reports"
+        )
+        return
+    
+    if args[0].lower() == 'on':
+        if not is_monitoring:
+            scheduler.add_job(
+                send_scheduled_report,
+                trigger=IntervalTrigger(hours=config.REPORT_INTERVAL_HOURS),
+                id="hourly_report",
+                replace_existing=True,
+                args=[context]
+            )
+            if not scheduler.running:
+                scheduler.start()
+            is_monitoring = True
+        await update.message.reply_text("✅ Hourly alerts enabled")
+    elif args[0].lower() == 'off':
+        if is_monitoring:
+            scheduler.remove_job("hourly_report")
+            is_monitoring = False
+        await update.message.reply_text("✅ Alerts disabled")
+
+
+async def cmd_keywords(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle /keywords command - show top search terms"""
+    await update.message.reply_text("⏳ Fetching search terms...")
+    
+    terms = ads_manager.get_search_terms(min_impressions=5)
+    
+    if not terms:
+        await update.message.reply_text("❌ No search term data available")
+        return
+    
+    text = "🔍 *Top Search Terms (7 days)*\n\n"
+    for i, t in enumerate(terms[:15], 1):
+        emoji = "🟢" if t["ctr"] >= 2 else "🟡" if t["ctr"] >= 1 else "🔴"
+        text += f"{i}. {emoji} `{t['term']}`\n"
+        text += f"   {t['clicks']} clicks | CTR: {format_percent(t['ctr'])}\n\n"
+    
+    await update.message.reply_text(text, parse_mode="Markdown")
+
+
 async def post_init(application: Application):
-    """Set bot commands in Telegram menu"""
     commands = [
         BotCommand("start", "Start monitoring"),
         BotCommand("stop", "Stop monitoring"),
         BotCommand("report", "Get report now"),
         BotCommand("status", "Campaign status"),
         BotCommand("adgroups", "Ad groups stats"),
+        BotCommand("keywords", "Top search terms"),
         BotCommand("pause", "Pause campaign"),
         BotCommand("enable", "Enable campaign"),
+        BotCommand("budget", "View/set budget"),
+        BotCommand("alerts", "Toggle alerts on/off"),
         BotCommand("help", "Show help"),
     ]
     await application.bot.set_my_commands(commands)
@@ -338,6 +416,10 @@ def main():
     application.add_handler(CommandHandler("pause", cmd_pause))
     application.add_handler(CommandHandler("enable", cmd_enable))
     application.add_handler(CommandHandler("help", cmd_help))
+    # Добавь после существующих handlers
+    application.add_handler(CommandHandler("budget", cmd_budget))
+    application.add_handler(CommandHandler("alerts", cmd_alerts))
+    application.add_handler(CommandHandler("keywords", cmd_keywords))
     
     logger.info("Bot starting...")
     application.run_polling(allowed_updates=Update.ALL_TYPES)

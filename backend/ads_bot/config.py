@@ -3,9 +3,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Telegram
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+# Telegram (отдельный бот для рекламы)
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN_ADS")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID_ADS")
 
 # Google Ads
 GOOGLE_ADS_DEVELOPER_TOKEN = os.getenv("GOOGLE_ADS_DEVELOPER_TOKEN")
