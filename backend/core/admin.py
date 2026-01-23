@@ -10,10 +10,12 @@ class CarCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ['name', 'category', 'price_per_day', 'is_active']
+    list_display = ['name', 'category', 'price_per_day', 'order', 'is_active']
+    list_editable = ['order', 'is_active']  # добавь order
     list_filter = ['category', 'is_active']
     search_fields = ['name']
     prepopulated_fields = {'slug': ('name',)}
+    ordering = ['order']
 
 
 # Добавить в backend/core/admin.py

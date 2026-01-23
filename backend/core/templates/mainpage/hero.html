@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="content">
-        <div class="tf-container">
+        <div class="tf-container w-lg">
             <h1 class="title text_white qodef-m-title mb_16 hero_title">
                 Looking to Rent a Luxury Car?<br>Send A Request
             </h1>
@@ -38,44 +38,45 @@
         </div>
     </div>
     <div class="flat-tab flat-tab-form">
-        <div class="tf-container">
+        <div class="tf-container w-lg">
             <div class="wg-filter">
-                <div class="widget-content-inner active">
-                    <div class="form-title">
-                        <div class="wrap-fill d-flex align-items-end">
-                            <div class="form-field">
-                                <input type="text" placeholder="Choose location" class="form-input-custom">
-                            </div>
-                            <div class="form-field">
-                                <input type="date" class="form-input-custom" value="{% now 'Y-m-d' %}">
-                            </div>
-                            <div class="form-field">
-                                <input type="time" placeholder="Select time" class="form-input-custom">
-                            </div>
-                            <div class="form-field">
-    <select class="form-input-custom">
-        <option value="" disabled selected>Car class</option>
-        <option value="sport">Sport</option>
-        <option value="suv">SUV</option>
-        <option value="luxury">Luxury</option>
-        <option value="business">Business</option>
-    </select>
-</div>
-                            <div class="form-field">
-                                <input type="text" placeholder="Drop off location" class="form-input-custom">
-                            </div>
-                            <div class="form-field">
-                                <input type="tel" placeholder="Your phone/WhatsApp" class="form-input-custom">
-                            </div>
-                            <div class="form-field">
-                                <button type="submit" class="btn-send-custom" data-gtag-event="hero_form_submit">
-                                    <span style="font-size: 20px;">+</span>
-                                    <span> SEND</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <form class="widget-content-inner active" id="hero-booking-form">
+    {% csrf_token %}
+    <div class="form-title">
+        <div class="wrap-fill d-flex align-items-end">
+            <div class="form-field">
+                <input type="text" name="location" placeholder="Choose location" class="form-input-custom">
+            </div>
+            <div class="form-field">
+                <input type="date" name="date" class="form-input-custom" value="{% now 'Y-m-d' %}">
+            </div>
+            <div class="form-field">
+                <input type="time" name="time" placeholder="Select time" class="form-input-custom">
+            </div>
+            <div class="form-field">
+                <select name="car_class" class="form-input-custom">
+                    <option value="" disabled selected>Car class</option>
+                    <option value="sport">Sport</option>
+                    <option value="suv">SUV</option>
+                    <option value="luxury">Luxury</option>
+                    <option value="business">Business</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <input type="text" name="dropoff" placeholder="Drop off location" class="form-input-custom">
+            </div>
+            <div class="form-field">
+                <input type="tel" name="phone" placeholder="Your phone/WhatsApp" class="form-input-custom" required>
+            </div>
+            <div class="form-field">
+                <button type="submit" class="btn-send-custom">
+                    <span style="font-size: 20px;">+</span>
+                    <span> SEND</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
             </div>
         </div>
     </div>
@@ -317,21 +318,63 @@ input[type="time"].form-input-custom {
 document.addEventListener('DOMContentLoaded', function() {
     new Swiper('.hero-slider', {
         loop: true,
-        autoplay: {
-            delay: 2000,
-            disableOnInteraction: false
-        },
+        autoplay: { delay: 2000, disableOnInteraction: false },
         effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
+        fadeEffect: { crossFade: true },
         speed: 1500
     });
-});
-// Делаем всё поле кликабельным для date/time
-document.querySelectorAll('input[type="date"], input[type="time"]').forEach(function(input) {
-    input.addEventListener('click', function() {
-        this.showPicker();
+
+    document.querySelectorAll('input[type="date"], input[type="time"]').forEach(input => {
+        input.addEventListener('click', function() { this.showPicker(); });
+    });
+
+    const form = document.getElementById('hero-booking-form');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('.btn-send-custom');
+        
+        if (!formData.get('phone') || formData.get('phone').length < 8) {
+            alert('Please enter a valid phone number');
+            return;
+        }
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending...</span>';
+        
+        fetch('/api/booking/', {
+            method: 'POST',
+            headers: { 'X-CSRFToken': formData.get('csrfmiddlewaretoken') },
+            body: formData
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'generate_lead', {
+                        'event_category': 'form',
+                        'event_label': 'hero_booking',
+                        'car_class': formData.get('car_class')
+                    });
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-17794321096/XXXXX',
+                        'value': 1.0,
+                        'currency': 'EUR'
+                    });
+                }
+                alert('Thank you! We will contact you shortly.');
+                form.reset();
+            } else {
+                alert(data.error || 'Error sending request');
+            }
+        })
+        .catch(() => alert('Network error. Please try again.'))
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span style="font-size: 20px;">+</span><span> SEND</span>';
+        });
     });
 });
 </script>

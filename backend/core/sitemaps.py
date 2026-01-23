@@ -12,6 +12,10 @@ class StaticSitemap(Sitemap):
     def items(self):
         return [
             ("index", 1.0, "weekly"),
+            ("contacts", 0.8, "monthly"),
+            ("faq", 0.7, "monthly"),
+            ("privacy", 0.3, "yearly"),
+            ("cookies", 0.3, "yearly"),
         ]
 
     def location(self, item):
@@ -22,21 +26,3 @@ class StaticSitemap(Sitemap):
 
     def changefreq(self, item):
         return item[2]
-
-
-class BlogSitemap(Sitemap):
-    """Sitemap для блога"""
-    
-    protocol = "https"
-    changefreq = "weekly"
-    priority = 0.6
-
-    def items(self):
-        from blog.models import BlogPost
-        return BlogPost.objects.filter(status=BlogPost.Status.PUBLISHED)
-
-    def lastmod(self, obj):
-        return obj.updated_at
-
-    def location(self, obj):
-        return obj.get_absolute_url()

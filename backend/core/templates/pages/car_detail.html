@@ -60,7 +60,7 @@
                                         </div>
                                         <h4>{{ car.name }}</h4>
                                     </div>
-                                    <h4 class="price">€1500<span
+                                    <h4 class="price">€{{ car.price_per_day|floatformat:0 }}<span
                                             class="text_secondary-color text-body-1">/day</span>
                                     </h4>
                                 </div>

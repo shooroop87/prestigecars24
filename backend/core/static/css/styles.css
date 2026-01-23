@@ -2356,7 +2356,7 @@ a:focus, a:hover {
   gap: 24px;
 }
 .main-menu .navigation > li {
-  padding: 32px 0px 31px;
+  padding: 12px 0px 31px;
   cursor: pointer;
 }
 .main-menu .navigation > li.current-menu > a::before {
@@ -9828,4 +9828,9 @@ tr {
 
 .qodef-m-text {
   margin: 10px 0 0;
+}
+@media (max-width: 767px) {
+  .text_white-2 {
+    font-size: 32px;
+  }
 }

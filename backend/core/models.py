@@ -41,10 +41,11 @@ class Car(models.Model):
     tags = models.CharField(max_length=500, blank=True, help_text="Comma separated: Exclusive, Hybrid, Sport")
     
     is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        ordering = ['name']
+        ordering = ['order', 'name']
     
     def __str__(self):
         return self.name
