@@ -8,13 +8,6 @@ dj-database-url>=2.1.0
 gunicorn>=21.2.0
 
 # ===========================================
-# Authentication (Google OAuth)
-# ===========================================
-django-allauth>=0.61.0
-PyJWT>=2.8.0
-cryptography
-
-# ===========================================
 # Background Tasks
 # ===========================================
 redis>=5.0.0
@@ -75,6 +68,6 @@ django-debug-toolbar>=4.2.0
 # ===========================================
 # Google Ads Bot
 # ===========================================
-python-telegram-bot>=20.0
+python-telegram-bot==20.7
+APScheduler>=3.10.0
 google-ads>=24.0.0
-apscheduler>=3.10.0
