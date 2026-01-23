@@ -3635,6 +3635,46 @@ form input[type=color] {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+#hero-booking-form textarea,
+#hero-booking-form input[type=text],
+#hero-booking-form input[type=password],
+#hero-booking-form input[type=datetime],
+#hero-booking-form input[type=datetime-local],
+#hero-booking-form input[type=date],
+#hero-booking-form input[type=month],
+#hero-booking-form input[type=time],
+#hero-booking-form input[type=week],
+#hero-booking-form input[type=number],
+#hero-booking-form input[type=email],
+#hero-booking-form input[type=url],
+#hero-booking-form input[type=search],
+#hero-booking-form input[type=tel],
+#hero-booking-form input[type=color] {
+    outline: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    background-color: transparent;
+    color: #fff;
+    overflow: hidden;
+    margin-bottom: 0;
+    font-size: 16px;
+    line-height: 26px;
+    transition: all 0.3s ease;
+}
+#hero-booking-form .form-input-custom {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-family: Inconsolata, sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 12px 0;
+    width: 100%;
+    outline: none;
+}
 form textarea::placeholder,
 form input[type=text]::placeholder,
 form input[type=password]::placeholder,
