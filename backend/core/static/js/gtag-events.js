@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Конверсии для важных действий
             if (eventName.includes('whatsapp') || eventName === 'hero_form_submit') {
                 gtag('event', 'conversion', {
-                    'send_to': 'AW-XXXXXXXXX/YYYYYYY', // Заменить на реальный ID
+                    'send_to': 'AW-17794321096', // Заменить на реальный ID
                     'value': 1.0,
                     'currency': 'EUR'
                 });

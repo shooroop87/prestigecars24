@@ -82,7 +82,7 @@ function submitBookingForm() {
             // Track conversion
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'conversion', {
-                    'send_to': 'AW-XXXXXXXXX/XXXXX', // Заменить на реальный ID
+                    'send_to': 'AW-17794321096', // Заменить на реальный ID
                     'value': 1.0,
                     'currency': 'EUR'
                 });
