@@ -227,13 +227,14 @@ input[type="time"].form-input-custom::-webkit-calendar-picker-indicator {
     color: #0c1315;
 }
 .hero_title {
-    font-size: 48px;
+    font-size: 42px;
     font-weight: 400;
     line-height: 1.2;
 }
 .hero_subtitle {
     font-size: 16px;
     margin-bottom: 40px;
+    color: rgb(217, 217, 217);
 }
 @media (max-width: 767px) {
   .hero_subtitle {
@@ -313,6 +314,40 @@ input[type="date"].form-input-custom,
 input[type="time"].form-input-custom {
     cursor: pointer;
 }
+.form-input-custom {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    font-family: Inconsolata, sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 12px 10px;
+    width: 100%;
+    outline: none;
+}
+
+.form-input-custom::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 1;
+}
+
+select.form-input-custom {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+select.form-input-custom option {
+    background: #0c1315;
+    color: #fff;
+}
+
+/* Иконки date/time светлее */
+input[type="date"].form-input-custom::-webkit-calendar-picker-indicator,
+input[type="time"].form-input-custom::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(1);
+    opacity: 0.7;
+    cursor: pointer;
+}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -359,8 +394,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         'car_class': formData.get('car_class')
                     });
                     gtag('event', 'conversion', {
-                        'send_to': 'AW-17794321096/XXXXX',
-                        'value': 1.0,
+                        'send_to': 'AW-17794321096/Rbl2CMzfmusbEMiV_6RC',
+                        'value': 5.0,
                         'currency': 'EUR'
                     });
                 }

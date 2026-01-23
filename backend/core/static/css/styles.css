@@ -2369,7 +2369,7 @@ a:focus, a:hover {
   font-size: 16px;
   line-height: 24px;
   text-transform:uppercase;
-  letter-spacing: .25em;
+  letter-spacing: .2em;
 }
 .main-menu .navigation > li.has-child > a::after {
   right: 0;
@@ -3622,8 +3622,7 @@ form input[type=color] {
   width: 100%;
   padding: 11px 16px;
   background-color: var(--White);
-  border: 1px solid var(--Line);
-  border-radius: 8px;
+  border: 1px solid #bfbfbf;
   color: var(--Text-primary);
   overflow: hidden;
   margin-bottom: 0;
@@ -3656,7 +3655,7 @@ form input[type=color] {
     box-shadow: none;
     width: 100%;
     background-color: transparent;
-    color: #fff;
+    color: #bfbfbf;
     overflow: hidden;
     margin-bottom: 0;
     font-size: 16px;
@@ -3666,14 +3665,14 @@ form input[type=color] {
 #hero-booking-form .form-input-custom {
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
+    border-bottom: 1px solid #bfbfbf;
+    color: #bfbfbf;
     font-family: Inconsolata, sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     letter-spacing: 1px;
-    padding: 12px 0;
     width: 100%;
     outline: none;
+    padding: 11px 16px;
 }
 form textarea::placeholder,
 form input[type=text]::placeholder,
@@ -3690,7 +3689,7 @@ form input[type=url]::placeholder,
 form input[type=search]::placeholder,
 form input[type=tel]::placeholder,
 form input[type=color]::placeholder {
-  color: var(--Text-secondary);
+  color: #bfbfbf;
 }
 form textarea:focus,
 form input[type=text]:focus,
@@ -9851,7 +9850,7 @@ tr {
     font-family: Epilogue, sans-serif;
     font-size: 42px;
     line-height: 1.3095238095em;
-    margin: 25px 0;
+    margin: 15px 0;
     -ms-word-wrap: break-word;
     word-wrap: break-word;
 }
