@@ -29,6 +29,7 @@ class GoogleAdsManager:
                 "client_id": config.GOOGLE_ADS_CLIENT_ID,
                 "client_secret": config.GOOGLE_ADS_CLIENT_SECRET,
                 "refresh_token": config.GOOGLE_ADS_REFRESH_TOKEN,
+                "login_customer_id": config.GOOGLE_ADS_LOGIN_CUSTOMER_ID,
                 "use_proto_plus": True,
             }
             self.client = GoogleAdsClient.load_from_dict(credentials)
