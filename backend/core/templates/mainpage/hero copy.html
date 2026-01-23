@@ -41,6 +41,7 @@
         <div class="tf-container">
             <div class="wg-filter">
                 <div class="widget-content-inner active">
+                    {% csrf_token %}
                     <div class="form-title">
                         <div class="wrap-fill d-flex align-items-end">
                             <div class="form-field">
@@ -315,23 +316,88 @@ input[type="time"].form-input-custom {
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Hero slider
     new Swiper('.hero-slider', {
         loop: true,
-        autoplay: {
-            delay: 2000,
-            disableOnInteraction: false
-        },
+        autoplay: { delay: 2000, disableOnInteraction: false },
         effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
+        fadeEffect: { crossFade: true },
         speed: 1500
     });
-});
-// Делаем всё поле кликабельным для date/time
-document.querySelectorAll('input[type="date"], input[type="time"]').forEach(function(input) {
-    input.addEventListener('click', function() {
-        this.showPicker();
+
+    // Date/time picker
+    document.querySelectorAll('input[type="date"], input[type="time"]').forEach(function(input) {
+        input.addEventListener('click', function() { this.showPicker(); });
+    });
+
+    // AJAX форма бронирования
+    const form = document.querySelector('.flat-tab-form');
+    const submitBtn = form.querySelector('.btn-send-custom');
+    
+    submitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData();
+        formData.append('location', form.querySelector('input[placeholder="Choose location"]').value);
+        formData.append('date', form.querySelector('input[type="date"]').value);
+        formData.append('time', form.querySelector('input[type="time"]').value);
+        formData.append('car_class', form.querySelector('select').value);
+        formData.append('dropoff', form.querySelector('input[placeholder="Drop off location"]').value);
+        formData.append('phone', form.querySelector('input[type="tel"]').value);
+        
+        // Валидация телефона
+        const phone = formData.get('phone');
+        if (!phone || phone.length < 8) {
+            alert('Please enter a valid phone number');
+            return;
+        }
+        
+        // Disable button
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending...</span>';
+        
+        // CSRF token
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value || '';
+        
+        fetch('/api/booking/', {
+            method: 'POST',
+            headers: { 'X-CSRFToken': csrfToken },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // GA4 Event
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'generate_lead', {
+                        'event_category': 'form',
+                        'event_label': 'hero_booking',
+                        'car_class': formData.get('car_class')
+                    });
+                    // Google Ads Conversion
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-17794321096', // Заменить на реальный
+                        'value': 1.0,
+                        'currency': 'EUR'
+                    });
+                }
+                // Success message
+                alert('Thank you! We will contact you shortly.');
+                // Reset form
+                form.querySelectorAll('input:not([type="date"])').forEach(i => i.value = '');
+                form.querySelector('select').selectedIndex = 0;
+            } else {
+                alert(data.error || 'Error sending request');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Network error. Please try again.');
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span style="font-size: 20px;">+</span><span> SEND</span>';
+        });
     });
 });
 </script>
