@@ -9,10 +9,11 @@ from django.urls import include, path, re_path
 from django.views.i18n import set_language
 from django.contrib.sitemaps.views import sitemap
 from django.views.generic import TemplateView
-from core.sitemaps import StaticSitemap
+from core.sitemaps import StaticSitemap, CarSitemap
 
 sitemaps = {
     'static': StaticSitemap,
+    'cars': CarSitemap,
 }
 
 # --- URLs без языкового префикса ---
