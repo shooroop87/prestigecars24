@@ -107,21 +107,21 @@ services:
     profiles: ["maintenance"]
     command: docker system prune -f
 
-  ads-bot:
-    image: egorovdocker/prestigecars_backend
-    env_file: .env
-    working_dir: /app
-    command: python ads_bot/bot.py
-    depends_on:
-      - redis
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          memory: 256M
-    healthcheck:
-      test: ["CMD", "python", "-c", "print('ok')"]
-      interval: 60s
-      timeout: 10s
-      retries: 3
-      start_period: 30s
+  # ads-bot:
+  #   image: egorovdocker/prestigecars_backend
+  #   env_file: .env
+  #   working_dir: /app
+  #   command: python ads_bot/bot.py
+  #   depends_on:
+  #     - redis
+  #   restart: unless-stopped
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         memory: 256M
+  #   healthcheck:
+  #     test: ["CMD", "python", "-c", "print('ok')"]
+  #     interval: 60s
+  #     timeout: 10s
+  #     retries: 3
+  #     start_period: 30s

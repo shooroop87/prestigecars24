@@ -167,7 +167,7 @@ jobs:
           
           # БЕЗОПАСНЫЙ ПЕРЕЗАПУСК: только приложение, БД и Redis остаются работать
           echo "🔄 Restarting application services..."
-          sudo docker compose -f docker-compose.production.yml up -d --no-deps backend gateway
+          sudo docker compose -f docker-compose.production.yml up -d --no-deps backend gateway ads-bot
           
           # Ожидание запуска сервисов
           echo "⏳ Waiting for services to start..."
@@ -190,7 +190,7 @@ jobs:
           
           # 🌐 Компиляция переводов
           echo "🌍 Compiling messages..."
-          sudo docker compose -f docker-compose.production.yml exec backend python manage.py compilemessages
+          sudo docker compose ... exec backend python manage.py compilemessages || echo "ℹ️ No translations to compile"
           
           # 📁 Сбор статических файлов
           echo "📁 Collecting static files..."
@@ -202,7 +202,7 @@ jobs:
             -e DJANGO_SUPERUSER_USERNAME="${{ secrets.ADMIN_USERNAME }}" \
             -e DJANGO_SUPERUSER_EMAIL="${{ secrets.ADMIN_EMAIL }}" \
             -e DJANGO_SUPERUSER_PASSWORD="${{ secrets.ADMIN_PASSWORD }}" \
-            backend python manage.py create_admin || echo "ℹ️ Admin user creation skipped (may already exist)"
+            backend python manage.py createsuperuser --noinput || echo "ℹ️ Admin already exists"
           
           # 🔍 Проверка здоровья сервисов
           echo "🔍 Checking service health..."
