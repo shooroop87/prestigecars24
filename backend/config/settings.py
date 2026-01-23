@@ -160,7 +160,7 @@ else:
             "USER": os.getenv("POSTGRES_USER", "prestigecars_user"),
             "PASSWORD": os.getenv("POSTGRES_PASSWORD", "prestigecars_password"),
             "HOST": os.getenv("POSTGRES_HOST", "localhost"),
-            "PORT": os.getenv("POSTGRES_PORT", "5450"),
+            "PORT": os.getenv("POSTGRES_PORT", "5432"),
         }
     }
 
