@@ -55,6 +55,9 @@ def booking_request(request):
     if not is_valid:
         return JsonResponse({'success': False, 'error': error}, status=400)
     
+    # Очищаем телефон для WhatsApp ссылки (только цифры)
+    phone_clean = re.sub(r'\D', '', phone)
+    
     # Telegram сообщение
     message = f"""🚗 <b>New Booking Request</b>
 
@@ -63,7 +66,7 @@ def booking_request(request):
 📅 Date: {date}
 🕐 Time: {time}
 🚘 Class: {car_class}
-📱 Phone: {phone}"""
+📱 Phone: <a href="https://wa.me/{phone_clean}">{phone}</a>"""
     
     send_telegram(message)
     
