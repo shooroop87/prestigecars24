@@ -240,6 +240,7 @@ input[type="time"].form-input-custom::-webkit-calendar-picker-indicator {
   .hero_subtitle {
     margin-bottom: 0;
     color: #fff;
+    margin-bottom: 10px;
   }
   .hero_title {
     font-size: 28px;
@@ -387,18 +388,12 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(r => r.json())
         .then(data => {
             if (data.success) {
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'generate_lead', {
-                        'event_category': 'form',
-                        'event_label': 'hero_booking',
-                        'car_class': formData.get('car_class')
-                    });
-                    gtag('event', 'conversion', {
-                        'send_to': 'AW-17794321096/Rbl2CMzfmusbEMiV_6RC',
-                        'value': 5.0,
-                        'currency': 'EUR'
-                    });
-                }
+                gtag('event', 'generate_lead', {
+                    'event_category': 'form',
+                    'event_label': 'hero_booking',
+                    'car_class': formData.get('car_class')
+                });
+                sendConversion('form', 5.0);
                 alert('Thank you! We will contact you shortly.');
                 form.reset();
             } else {
