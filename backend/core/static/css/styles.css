@@ -8822,6 +8822,11 @@ tr {
   height: 600px;
   border-radius: 20px;
   margin-bottom: 48px;
+  background-image: url("https://prestigecars24.com/static/images/h1-img-5.webp");
+  background-position: center; /* или конкретная позиция */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .section-about .parallaxie .content,
 .banner-2 .parallaxie .content {

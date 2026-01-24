@@ -3,20 +3,21 @@ import requests
 
 
 def send_telegram(message):
-    """Отправка в Telegram нескольким получателям"""
+    """Отправка в Telegram только разрешённым пользователям"""
     token = os.getenv('TELEGRAM_BOT_TOKEN')
-    chat_ids = os.getenv('TELEGRAM_CHAT_ID', '')
+    allowed_ids = os.getenv('TELEGRAM_CHAT_ID', '')
     
-    if not token or not chat_ids:
+    if not token or not allowed_ids:
         return False
     
     url = f"https://api.telegram.org/bot{token}/sendMessage"
-    success = True
+    allowed_list = [cid.strip() for cid in allowed_ids.split(',') if cid.strip()]
     
-    for chat_id in chat_ids.split(','):
-        chat_id = chat_id.strip()
-        if not chat_id:
-            continue
+    if not allowed_list:
+        return False
+    
+    success = True
+    for chat_id in allowed_list:
         try:
             requests.post(url, data={
                 'chat_id': chat_id, 
