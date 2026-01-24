@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <form class="form-contact" method="post" action="{% url 'index' %}">
+                <form class="form-contact" method="post" id="contact-form">
                     {% csrf_token %}
                     <input type="hidden" name="source" value="contact_page">
                     <div class="heading mb_24">
@@ -240,4 +240,36 @@
     }
 }
 </style>
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const formData = new FormData(form);
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>Sending...</span>';
+    
+    fetch('/api/contact/', {
+        method: 'POST',
+        headers: { 'X-CSRFToken': formData.get('csrfmiddlewaretoken') },
+        body: formData
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            alert('Thank you! We will contact you soon.');
+            form.reset();
+        } else {
+            alert(data.error || 'Error sending message');
+        }
+    })
+    .catch(() => alert('Network error. Please try again.'))
+    .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Send Message</span>';
+    });
+});
+</script>
 {% endblock %}

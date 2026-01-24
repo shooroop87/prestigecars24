@@ -2356,7 +2356,7 @@ a:focus, a:hover {
   gap: 24px;
 }
 .main-menu .navigation > li {
-  padding: 12px 0px 31px;
+  padding: 31px 0px 31px;
   cursor: pointer;
 }
 .main-menu .navigation > li.current-menu > a::before {
