@@ -54,3 +54,6 @@ if settings.DEBUG:
         urlpatterns = [
             path("__debug__/", include(debug_toolbar.urls)),
         ] + urlpatterns
+
+handler404 = 'core.views.error_404'
+handler500 = 'core.views.error_500'

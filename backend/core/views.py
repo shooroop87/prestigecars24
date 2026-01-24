@@ -151,3 +151,9 @@ def car_detail(request, category_slug, car_slug):
         is_active=True
     )
     return render(request, "pages/car_detail.html", {"car": car})
+
+def error_404(request, exception):
+    return render(request, '404.html', status=404)
+
+def error_500(request):
+    return render(request, '500.html', status=500)

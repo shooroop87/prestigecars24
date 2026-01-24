@@ -207,30 +207,29 @@ AUTH_PASSWORD_VALIDATORS = [
 # ===========================================
 # INTERNATIONALIZATION (DE primary, EN secondary)
 # ===========================================
-LANGUAGE_CODE = "ru"
-TIME_ZONE = "Asia/Makassar"
+LANGUAGE_CODE = "en"
+TIME_ZONE = "Europe/Rome"
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
 LANGUAGES = [
-    ("ru", _("Russian")),
     ("en", _("English")),
+    ("it", _("Italian")),
 ]
 
 LOCALE_PATHS = [BASE_DIR / "locale"]
 
 PARLER_LANGUAGES = {
     SITE_ID: (
-        {"code": "ru", "fallbacks": ["en"], "hide_untranslated": False},
-        {"code": "en", "fallbacks": ["ru"], "hide_untranslated": False},
+        {"code": "en", "fallbacks": ["it"], "hide_untranslated": False},
+        {"code": "it", "fallbacks": ["en"], "hide_untranslated": False},
     ),
     "default": {
-        "fallbacks": ['ru'],
+        "fallbacks": ["en"],
         "hide_untranslated": False,
     },
 }
-
 
 # ===========================================
 # STATIC & MEDIA

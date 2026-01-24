@@ -1,0 +1,46 @@
+<!-- backend/core/templates/404.html -->
+{% extends 'base3.html' %}
+{% load static %}
+
+{% block title %}404 - Page Not Found | Prestige Cars 24{% endblock %}
+
+{% block content %}
+<div class="error-page tf-spacing-1">
+    <div class="tf-container">
+        <div class="error-content text-center">
+            <div class="error-code text_secondary-color-2">404</div>
+            <h1 class="text_white mb_16" style="font-family: Epilogue, sans-serif; font-weight: 400; font-size: 32px;">
+                Page Not Found
+            </h1>
+            <p class="text_color-1 mb_40" style="max-width: 400px; margin: 0 auto 40px;">
+                The page you're looking for doesn't exist or has been moved.
+            </p>
+            <a href="{% url 'index' %}" class="qodef-button qodef-html--link qodef-layout--outlined">
+                <span>+ Back to Home</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.error-content {
+    padding: 60px 20px;
+}
+.error-code {
+    font-family: 'Sora', sans-serif;
+    font-size: 180px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+    .error-code { font-size: 120px; }
+}
+</style>
+{% endblock %}
