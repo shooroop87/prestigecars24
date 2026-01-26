@@ -45,29 +45,29 @@
     <div class="form-title">
         <div class="wrap-fill d-flex align-items-end">
             <div class="form-field">
-                <input type="text" name="location" placeholder="Choose location" class="form-input-custom">
-            </div>
-            <div class="form-field">
-                <input type="date" name="date" class="form-input-custom" value="{% now 'Y-m-d' %}">
-            </div>
-            <div class="form-field">
-                <input type="time" name="time" placeholder="Select time" class="form-input-custom">
-            </div>
-            <div class="form-field">
-                <select name="car_class" class="form-input-custom">
-                    <option value="" disabled selected>Car class</option>
-                    <option value="sport">Sport</option>
-                    <option value="suv">SUV</option>
-                    <option value="luxury">Luxury</option>
-                    <option value="business">Business</option>
-                </select>
-            </div>
-            <div class="form-field">
-                <input type="text" name="dropoff" placeholder="Drop off location" class="form-input-custom">
-            </div>
-            <div class="form-field">
-                <input type="tel" name="phone" placeholder="Your phone" class="form-input-custom" required>
-            </div>
+    <input type="text" name="location" placeholder="Choose location" class="form-input-custom" required>
+</div>
+<div class="form-field">
+    <input type="date" name="date" class="form-input-custom" value="{% now 'Y-m-d' %}" required>
+</div>
+<div class="form-field">
+    <input type="time" name="time" placeholder="Select time" class="form-input-custom" required>
+</div>
+<div class="form-field">
+    <select name="car_class" class="form-input-custom" required>
+        <option value="" disabled selected>Car class</option>
+        <option value="sport">Sport</option>
+        <option value="suv">SUV</option>
+        <option value="luxury">Luxury</option>
+        <option value="business">Business</option>
+    </select>
+</div>
+<div class="form-field">
+    <input type="text" name="dropoff" placeholder="Drop off location" class="form-input-custom" required>
+</div>
+<div class="form-field">
+    <input type="tel" name="phone" placeholder="Your phone" class="form-input-custom" required>
+</div>
             <div class="form-field">
                 <button type="submit" class="btn-send-custom">
                     <span style="font-size: 20px;">+</span>
