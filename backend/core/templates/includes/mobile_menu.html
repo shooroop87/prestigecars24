@@ -126,3 +126,18 @@
     color: #bfa37c;
 }
 </style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const menuMobile = document.getElementById('menu-mobile');
+    const anchorLinks = menuMobile.querySelectorAll('a[href*="#"]');
+    
+    anchorLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            const bsOffcanvas = bootstrap.Offcanvas.getInstance(menuMobile);
+            if (bsOffcanvas) {
+                bsOffcanvas.hide();
+            }
+        });
+    });
+});
+</script>
