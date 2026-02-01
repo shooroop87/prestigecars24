@@ -396,6 +396,16 @@ document.addEventListener('DOMContentLoaded', function() {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
     });
 
+    // Открытие календаря по клику на всё поле
+    document.querySelectorAll('input[type="date"]').forEach(input => {
+        input.addEventListener('click', function() { this.showPicker(); });
+    });
+    
+    // Открыть/закрыть модалку
+    openBtn.onclick = () => modal.style.display = 'flex';
+    closeBtn.onclick = () => modal.style.display = 'none';
+    overlay.onclick = () => modal.style.display = 'none';
+
     const form = document.getElementById('hero-booking-form');
     
     form.addEventListener('submit', function(e) {
