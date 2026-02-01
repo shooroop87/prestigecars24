@@ -65,9 +65,8 @@
 <div class="form-field">
     <input type="text" name="dropoff" placeholder="Drop off location" class="form-input-custom" required>
 </div>
-<div class="form-field phone-field">
-    <input type="tel" id="phone-input" name="phone" placeholder="Phone number" class="form-input-custom" required>
-    <input type="hidden" name="full_phone" id="full-phone">
+<div class="form-field">
+    <input type="tel" name="phone" placeholder="Your phone" class="form-input-custom" required>
 </div>
             <div class="form-field">
                 <button type="submit" class="btn-send-custom">
@@ -252,30 +251,6 @@ input[type="time"].form-input-custom::-webkit-calendar-picker-indicator {
     margin-top: 0px;
   }
 }
-.phone-field .iti {
-    width: 100%;
-}
-.phone-field .iti__flag-container {
-    background: transparent;
-}
-.phone-field .iti__selected-flag {
-    background: transparent;
-    border-right: 1px solid rgba(255,255,255,0.3);
-}
-.phone-field .iti__country-list {
-    background: #0c1315;
-    border: 1px solid #bfa37c;
-    color: #fff;
-}
-.phone-field .iti__country:hover {
-    background: rgba(191,163,124,0.2);
-}
-.phone-field .iti__country.iti__highlight {
-    background: rgba(191,163,124,0.3);
-}
-.phone-field .iti__dial-code {
-    color: #bfa37c;
-}
 /* Mobile */
 @media (max-width: 991px) {
     .form-title .wrap-fill {
@@ -375,8 +350,6 @@ input[type="time"].form-input-custom::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     new Swiper('.hero-slider', {
@@ -387,13 +360,8 @@ document.addEventListener('DOMContentLoaded', function() {
         speed: 1500
     });
 
-    // Инициализация intl-tel-input
-    const phoneInput = document.querySelector("#phone-input");
-    const iti = window.intlTelInput(phoneInput, {
-        initialCountry: "it",
-        preferredCountries: ["it", "ch", "gb", "fr", "de", "mc", "ae", "us"],
-        separateDialCode: true,
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
+    document.querySelectorAll('input[type="date"], input[type="time"]').forEach(input => {
+        input.addEventListener('click', function() { this.showPicker(); });
     });
 
     const form = document.getElementById('hero-booking-form');
@@ -404,14 +372,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
         const submitBtn = form.querySelector('.btn-send-custom');
         
-        // Получаем полный номер с кодом страны
-        const fullPhone = iti.getNumber();
-        if (!fullPhone || fullPhone.length < 8) {
+        if (!formData.get('phone') || formData.get('phone').length < 8) {
             alert('Please enter a valid phone number');
             return;
         }
-        
-        formData.set('full_phone', fullPhone);
         
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span>Sending...</span>';
@@ -429,6 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'event_label': 'hero_booking',
                     'car_class': formData.get('car_class')
                 });
+                sendConversion('form', 5.0);
                 alert('Thank you! We will contact you shortly.');
                 form.reset();
             } else {

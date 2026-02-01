@@ -39,38 +39,38 @@ def validate_phone(phone):
 
     
 # === API ДЛЯ ФОРМ ===
-
 @require_POST
 def booking_request(request):
     """Hero форма бронирования"""
+    name = request.POST.get('name', '').strip()
     location = request.POST.get('location', '')
     date = request.POST.get('date', '')
     time = request.POST.get('time', '')
     car_class = request.POST.get('car_class', '')
     dropoff = request.POST.get('dropoff', '')
-    phone = request.POST.get('phone', '')
+    full_phone = request.POST.get('full_phone', '')  # уже с кодом страны
     
-    # Валидация телефона
-    is_valid, error = validate_phone(phone)
-    if not is_valid:
-        return JsonResponse({'success': False, 'error': error}, status=400)
+    if not name:
+        return JsonResponse({'success': False, 'error': 'Please enter your name'}, status=400)
     
-    # Очищаем телефон для WhatsApp ссылки (только цифры)
-    phone_clean = re.sub(r'\D', '', phone)
+    if not full_phone or len(full_phone) < 8:
+        return JsonResponse({'success': False, 'error': 'Invalid phone number'}, status=400)
     
-    # Telegram сообщение
+    wa_phone = re.sub(r'\D', '', full_phone)
+    
     message = f"""🚗 <b>New Booking Request</b>
 
+👤 Name: {name}
 📍 Pickup: {location}
 📍 Dropoff: {dropoff}
 📅 Date: {date}
 🕐 Time: {time}
 🚘 Class: {car_class}
-📱 Phone: <a href="https://wa.me/{phone_clean}">{phone}</a>"""
+📱 Phone: <a href="https://wa.me/{wa_phone}">{full_phone}</a>"""
     
     send_telegram(message)
     
-    return JsonResponse({'success': True, 'message': 'Thank you! We will contact you shortly.'})
+    return JsonResponse({'success': True})
 
 
 @require_POST
