@@ -12,6 +12,7 @@ urlpatterns = [
     # API для форм
     path("api/booking/", views.booking_request, name="booking_request"),
     path("api/contact/", views.contact_request, name="contact_request"),
+    path("api/car-request/", views.car_request, name="car_request"),
     
     # Машины
     path("<slug:category_slug>/<slug:car_slug>/", views.car_detail, name="car_detail"),

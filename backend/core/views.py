@@ -44,13 +44,22 @@ def booking_request(request):
     """Hero форма бронирования"""
     location = request.POST.get('location', '')
     date = request.POST.get('date', '')
-    time = request.POST.get('time', '')
     car_class = request.POST.get('car_class', '')
     dropoff = request.POST.get('dropoff', '')
     full_phone = request.POST.get('full_phone', '')
+    email = request.POST.get('email', '').strip()
     
+    # Валидация телефона
     if not full_phone or len(full_phone) < 8:
         return JsonResponse({'success': False, 'error': 'Invalid phone number'}, status=400)
+    
+    # Валидация email
+    if not email:
+        return JsonResponse({'success': False, 'error': 'Please enter your email'}, status=400)
+    
+    is_valid, error = validate_email(email)
+    if not is_valid:
+        return JsonResponse({'success': False, 'error': error}, status=400)
     
     wa_phone = re.sub(r'\D', '', full_phone)
     
@@ -59,9 +68,9 @@ def booking_request(request):
 📍 Pickup: {location}
 📍 Dropoff: {dropoff}
 📅 Date: {date}
-🕐 Time: {time}
 🚘 Class: {car_class}
-📱 Phone: <a href="https://wa.me/{wa_phone}">{full_phone}</a>"""
+📱 Phone: <a href="https://wa.me/{wa_phone}">{full_phone}</a>
+📧 Email: {email}"""
     
     send_telegram(message)
     
@@ -152,3 +161,35 @@ def error_404(request, exception):
 
 def error_500(request):
     return render(request, '500.html', status=500)
+
+@require_POST
+def car_request(request):
+    """Запрос на конкретную машину"""
+    car_name = request.POST.get('car_name', '')
+    car_url = request.POST.get('car_url', '')
+    full_phone = request.POST.get('full_phone', '')
+    email = request.POST.get('email', '').strip()
+    date = request.POST.get('date', '')
+    
+    if not full_phone or len(full_phone) < 8:
+        return JsonResponse({'success': False, 'error': 'Invalid phone number'}, status=400)
+    
+    if not email:
+        return JsonResponse({'success': False, 'error': 'Please enter your email'}, status=400)
+    
+    is_valid, error = validate_email(email)
+    if not is_valid:
+        return JsonResponse({'success': False, 'error': error}, status=400)
+    
+    wa_phone = re.sub(r'\D', '', full_phone)
+    
+    message = f"""🚗 <b>Car Request</b>
+
+🏎 Car: <a href="{car_url}">{car_name}</a>
+📅 Date: {date if date else 'Not specified'}
+📱 Phone: <a href="https://wa.me/{wa_phone}">{full_phone}</a>
+📧 Email: {email}"""
+    
+    send_telegram(message)
+    
+    return JsonResponse({'success': True})
