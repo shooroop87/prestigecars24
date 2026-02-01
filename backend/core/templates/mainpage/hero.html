@@ -51,9 +51,6 @@
     <input type="date" name="date" class="form-input-custom" value="{% now 'Y-m-d' %}" required>
 </div>
 <div class="form-field">
-    <input type="time" name="time" placeholder="Select time" class="form-input-custom" required>
-</div>
-<div class="form-field">
     <select name="car_class" class="form-input-custom" required>
         <option value="" disabled selected>Car class</option>
         <option value="sport">Sport</option>
@@ -68,6 +65,9 @@
 <div class="form-field phone-field">
     <input type="tel" id="phone-input" name="phone" placeholder="Phone number" class="form-input-custom" required>
     <input type="hidden" name="full_phone" id="full-phone">
+</div>
+<div class="form-field">
+    <input type="email" name="email" placeholder="Your email" class="form-input-custom" required>
 </div>
             <div class="form-field">
                 <button type="submit" class="btn-send-custom">
