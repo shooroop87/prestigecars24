@@ -42,16 +42,12 @@ def validate_phone(phone):
 @require_POST
 def booking_request(request):
     """Hero форма бронирования"""
-    name = request.POST.get('name', '').strip()
     location = request.POST.get('location', '')
     date = request.POST.get('date', '')
     time = request.POST.get('time', '')
     car_class = request.POST.get('car_class', '')
     dropoff = request.POST.get('dropoff', '')
-    full_phone = request.POST.get('full_phone', '')  # уже с кодом страны
-    
-    if not name:
-        return JsonResponse({'success': False, 'error': 'Please enter your name'}, status=400)
+    full_phone = request.POST.get('full_phone', '')
     
     if not full_phone or len(full_phone) < 8:
         return JsonResponse({'success': False, 'error': 'Invalid phone number'}, status=400)
@@ -60,7 +56,6 @@ def booking_request(request):
     
     message = f"""🚗 <b>New Booking Request</b>
 
-👤 Name: {name}
 📍 Pickup: {location}
 📍 Dropoff: {dropoff}
 📅 Date: {date}
